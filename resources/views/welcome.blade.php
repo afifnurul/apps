@@ -116,33 +116,34 @@
                                         <div class="album">
                                             <div class="container px-5">
                                                 <div class="row mt-2 px-5 ml-1">
-                                                    @foreach ($produks as $produk)
+                                                    @foreach ($pakets as $paket)
+        
+                                                    @if ($paket->kategorinya->nama == 'Lain-lain')
                                                     <div class="col-md-4">
-    
-                                                        <a href="{{ route('detail', ['id' => $produk->id]) }}" style="text-decoration: none">
+                                                        <a href="{{ route('detail', ['id' => $paket->id]) }}" style="text-decoration: none">
                                                             <div class="col mb-4">
                                                                 <div class="shadow-lg">
                                                                     <div class="card animate__animated animate__bounceInLeft" style="width: 17rem; height:18rem; box-shadow: 8px black">
-                                                                        <img class="" src="{{ asset('public/produk/'.$produk->gambar.'')}}" height="170px" alt="">
-                                                                        <img class="card-img rounded" src="{{ $paket->gambar }}" height="150px" alt="">
+                                                                        @if (isset($paket->banner->img))
+                                                                            <img class="" src="{{ asset('paket/detail/'.$paket->banner->img.'')}}" height="170px" alt="">
+                                                                        @endif
                                                                         <div class="ml-2 mt-2 mb-3 text-dark" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
-                                                                            {{ $produk->nama_produk }} <br> by. Gatro Dekorasi
+                                                                        {{ $paket->nama }} <br> by. Gatro Dekorasi
                                                                         </div>
                                                                         
                                                                         <div class="ml-2 mt-3 mb-1 font-weight-bold">
-                                                                            @php
-                                                                                $harga = $produk->harga;
-                                                                                $harga = number_format($harga, 0, '', '.')
-                                                                            @endphp
-                                                                            Rp. {{ $harga }}
+                                                                        @php
+                                                                            $harga = $paket->harga;
+                                                                            $harga = number_format($harga, 0, '', '.')
+                                                                        @endphp
+                                                                        Rp. {{ $harga }}
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>            
-                                                            </a>         
-                                                    
-                                                    </div>                                                        
-                                                    
+                                                        </a>            
+                                                    </div>                                                     
+                                                    @endif
                                                     @endforeach
                                                 </div>
                                             </div>

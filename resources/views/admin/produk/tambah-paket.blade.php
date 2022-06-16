@@ -121,7 +121,7 @@
           </div>
           <div class="form-group w-100">
             <label for="inputState">Kategori</label>
-            <select id="inputState" class="form-control" name="kategori">
+            <select id="kategori" class="form-control" name="kategori">
               <option disabled selected>--Pilih Kategori--</option>
               @if (isset($kategoris))
                   
@@ -132,9 +132,12 @@
               @endif
             </select>
           </div>
-          <textarea name="detail" id="detail" cols="80" rows="10" class="d-none"></textarea>
+          <div id="deskripsi" class="d-none">
+            <label for="">Deskripsi</label>
+            <textarea name="detail" id="detail" cols="80" rows="10"></textarea>
+          </div>
           <input type="hidden" id="jml" value="{{ count($produks) }}">
-          <div class="form-group w-100">
+          <div class="form-group w-100" id="detail-barang">
             <label for="inputAddress">Detail</label>
             <?php $i = 1; ?>
             @foreach ($produks as $produk)
@@ -197,7 +200,7 @@
       btn.addEventListener('click', function(){
           if(checkbox.checked){
               var val = input.value;
-              textarea.value += checkbox.value + " " + val + "<br>";
+              textarea.value += checkbox.value + " " + val + "\n";
           }
       });
   }
@@ -205,6 +208,19 @@
       main(i);
       console.log(i);
   }
+</script>
+
+<script>
+  var kat = document.querySelector('#kategori');
+  kat.addEventListener('change', function(){
+    if(kat.value == '3'){
+      document.querySelector('#detail-barang').style.display = 'none';
+      document.querySelector('#deskripsi').classList.remove('d-none');
+    } else {
+      document.querySelector('#detail-barang').style.display = 'block';
+      document.querySelector('#deskripsi').classList.add('d-none');
+    }
+  });
 </script>
 
 <script>

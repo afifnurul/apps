@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Produk;
+use Carbon\Carbon;
 use App\Models\Paket;
+use App\Models\Produk;
 use App\Models\Kategori;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\GambarPaket;
 use App\Models\PaketDetail;
-use Carbon\Carbon;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class AdminProdukController extends Controller
 {
@@ -57,7 +58,7 @@ class AdminProdukController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'jml_tamu' => 'required',
+            'jml_tamu' => 'nullable',
             'harga' => 'required|numeric',
             'kategori' => 'required',
             'gambar_paket' => 'required',
@@ -71,10 +72,12 @@ class AdminProdukController extends Controller
             $paket->jml_tamu = $request->jml_tamu;
             $paket->save();
 
-            $paket_detail = new PaketDetail();
-            $paket_detail->id_paket = $paket->id;
-            $paket_detail->isi_paket = $request->detail;
-            $paket_detail->save();
+            if ($request->detail != null){
+                $paket_detail = new PaketDetail();
+                $paket_detail->id_paket = $paket->id;
+                $paket_detail->isi_paket = $request->detail;
+                $paket_detail->save();
+            }
 
                 foreach($request->file('gambar_paket') as $img){
                     $filename = $img->getClientOriginalName();
@@ -103,8 +106,24 @@ class AdminProdukController extends Controller
 
     public function DeletePaket($id)
     {
-        $paket = Paket::find($id);
-        $paket->delete();
+        $paket = Paket::where('id', $id)->first();
+        if($paket){
+            $paket->delete();
+        }
+
+        $paket_detail = PaketDetail::where('id_paket', $id)->get();
+        if ($paket_detail){
+            $paket_detail->delete();
+        } 
+
+        $gambar = GambarPaket::where('id_paket', $id)->get();
+        if ($gambar){
+            $gambarPath = public_path('paket/detail/'. $gambar->img);
+            if(File::exists($gambarPath)){
+                File::delete($gambar->img);
+            }
+            $gambar->delete();
+        }
 
         return redirect()->route('admin.produk');
     }
@@ -118,8 +137,8 @@ class AdminProdukController extends Controller
 
         $produk = new Produk();
         // jika ada gambarnya baru bisa masuk ke database
-        if($request->file('gambar')){
-            $file = $request->file('gambar');
+        if($request->file('img')){
+            $file = $request->file('img');
             $filename = date('YmdHi').$file->getClientOriginalName(); //buat nama filenya
             $file-> move(public_path('public/produk'), $filename); //simpan fotonya ke folder public/produkk
 

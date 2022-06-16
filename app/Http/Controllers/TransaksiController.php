@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use view;
 use App\Models\Paket;
 use App\Models\Penyewaan;
 use Illuminate\Http\Request;
