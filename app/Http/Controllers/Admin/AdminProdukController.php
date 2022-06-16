@@ -106,23 +106,22 @@ class AdminProdukController extends Controller
 
     public function DeletePaket($id)
     {
-        $paket = Paket::where('id', $id)->first();
+        $paket = Paket::find($id);
         if($paket){
             $paket->delete();
         }
 
-        $paket_detail = PaketDetail::where('id_paket', $id)->get();
+        $paket_detail = PaketDetail::where('id_paket', $id)->first();
         if ($paket_detail){
             $paket_detail->delete();
         } 
 
         $gambar = GambarPaket::where('id_paket', $id)->get();
         if ($gambar){
-            $gambarPath = public_path('paket/detail/'. $gambar->img);
-            if(File::exists($gambarPath)){
-                File::delete($gambar->img);
+            foreach($gambar as $img){
+                File::delete(public_path(). '/paket/detail/'.$img->img);
+                $img->delete();
             }
-            $gambar->delete();
         }
 
         return redirect()->route('admin.produk');

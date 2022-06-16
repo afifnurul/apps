@@ -3,7 +3,7 @@
 
     {{-- navigasi untuk admin bagian kiri --}}
 
-    <nav class="col-md-2 d-none d-md-block sidebar" style="background-color: #c88a72; height: 100vh">
+    <nav class="col-md-2 d-none d-md-block sidebar" style="background-color: #c88a72; height: 100vh; position: fixed">
         <div class="sidebar-sticky">
             <ul class="nav flex-column py-5 ml-3">
                 <li class="nav-item">
