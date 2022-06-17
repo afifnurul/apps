@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\AdminKategoriController;
 use App\Http\Controllers\Admin\AdminProdukController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\User\PesanController;
 use App\Http\Controllers\User\ProfilUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;

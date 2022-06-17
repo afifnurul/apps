@@ -79,14 +79,15 @@ class AdminProdukController extends Controller
                 $paket_detail->save();
             }
 
-                foreach($request->file('gambar_paket') as $img){
-                    $filename = $img->getClientOriginalName();
-                    $img->move(public_path(). '/paket/detail', $filename);
-                    $gambar = new GambarPaket();
-                    $gambar->id_paket = $paket->id;
-                    $gambar->img = $filename;
-                    $gambar->save();
-                }
+            foreach($request->file('gambar_paket') as $img){
+                $filename = date('Ymd') . $img->getClientOriginalName();
+                $img->move(public_path(). '/paket/detail', $filename);
+                $gambar = new GambarPaket();
+                $gambar->id_paket = $paket->id;
+                $gambar->img = $filename;
+                $gambar->save();
+            }
+
             return redirect()->route('admin.produk');
         }
     }
@@ -95,13 +96,39 @@ class AdminProdukController extends Controller
     {
         $paket = Paket::find($request->id);
 
-        $paket->nama = $request->nama;
-        $paket->harga = $request->harga;
-        $paket->jml_tamu = $request->jml_tamu;
-        $paket->id_kategori = $request->kategori;
-        $paket->save();
+        if($request->file('gambar_paket')){
+            $paket->id_kategori = $request->kategori;
+            $paket->nama = $request->nama;
+            $paket->harga = $request->harga;
+            $paket->jml_tamu = $request->jml_tamu;
+            $paket->save();
 
-        return redirect()->route('admin.produk');
+            if ($request->detail != null){
+                $paket_detail = PaketDetail::where('id_paket', $request->id)->first();
+                $paket_detail->id_paket = $paket->id;
+                $paket_detail->isi_paket = $request->detail;
+                $paket_detail->save();
+            }
+
+            foreach($request->file('gambar_paket') as $img){
+                $filename = date('Ymd') . $img->getClientOriginalName();
+                $img->move(public_path(). '/paket/detail', $filename);
+                $gambar = GambarPaket::where('id_paket', $request->id)->get();
+                $gambar->id_paket = $paket->id;
+                $gambar->img = $filename;
+                $gambar->save();
+            }
+
+            return redirect()->route('admin.produk');
+        }
+
+        // $paket->nama = $request->nama;
+        // $paket->harga = $request->harga;
+        // $paket->jml_tamu = $request->jml_tamu;
+        // $paket->id_kategori = $request->kategori;
+        // $paket->save();
+        
+        // return redirect()->route('admin.produk');
     }
 
     public function DeletePaket($id)

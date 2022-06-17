@@ -51,9 +51,9 @@
                                                                             
                                                                             <div class="ml-2 mt-3 mb-1 font-weight-bold">
                                                                                 @php
-                                                                                $harga = $paket->harga;
-                                                                                $harga = number_format($harga, 0, '', '.')
-                                                                            @endphp
+                                                                                    $harga = $paket->harga;
+                                                                                    $harga = number_format($harga, 0, '', '.')
+                                                                                @endphp
                                                                             Rp. {{ $harga }}
                                                                             </div>
                                                                         </div>

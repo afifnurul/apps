@@ -59,7 +59,11 @@
                             <tr>
                             <th scope="row">{{$no}}</th>
                             <td>{{ $paket->nama }}</td>
-                            <td>Rp. {{ $paket->harga }}</td>
+                            @php
+                                $harga = $paket->harga;
+                                $harga = number_format($harga, 0, '', '.')
+                            @endphp
+                            <td>Rp. {{ $harga }}</td>
                             <td>{{ $paket->jml_tamu }}</td>
                             <td>{{ $paket->kategorinya->nama }}</td>
                             <td>
@@ -112,7 +116,11 @@
                             <tr>
                             <th scope="row">{{$no}}</th>
                             <td>{{ $produks->nama_produk }}</td>
-                            <td>Rp. {{ $produks->harga }}</td>
+                            @php
+                                $harga = $produks->harga;
+                                $harga = number_format($harga, 0, '', '.')
+                            @endphp
+                            <td>Rp. {{ $harga }}</td>
                             <td>
                                 {{-- view --}}
                                 <a class="btn btn-primary text-white" href="{{ route('admin.produk.view', ['id' => $produks->id ]) }}" role="button">
