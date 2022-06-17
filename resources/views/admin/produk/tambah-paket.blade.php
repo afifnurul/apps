@@ -6,7 +6,7 @@
   @if (isset($paket))
   <h3 class="mt-3 px-5 mb-3">Edit Paket</h3>
   
-  <form action="{{ route('admin.produk.updatePaket') }}" method="POST" enctype="multipart/form-data">
+  <form action="{{ route('admin.produk.updatePaket') }}" onload="live()" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="id" value="{{ $paket->id }}">
     {{-- induk form mau dibagi 2 --}}
@@ -47,7 +47,7 @@
         </div>
         <div id="deskripsi" class="d-none">
           <label for="">Deskripsi</label>
-          <textarea name="detail" id="detail" cols="80" rows="10"></textarea>
+          <textarea name="detail" value="{{ $paket->isi_paket }}" id="detail" cols="80" rows="10"></textarea>
         </div>
         <input type="hidden" id="jml" value="{{ count($produks) }}">
         <div class="form-group w-100" id="detail-barang">
@@ -104,6 +104,13 @@
     
     <button type="submit" id="simpan" class="btn btn-primary ml-5">Simpan</button>
 </form>
+
+<script>
+  function live(){
+    var detil = document.querySelector('#detail');
+    console.log(detil.value);
+  }
+</script>
   @else
       
   <h3 class="mt-3 px-5 mb-3">Tambah Paket</h3>

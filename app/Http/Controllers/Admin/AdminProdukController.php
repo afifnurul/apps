@@ -10,6 +10,7 @@ use App\Models\GambarPaket;
 use App\Models\PaketDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\GambarProduk;
 use Illuminate\Support\Facades\File;
 
 class AdminProdukController extends Controller
@@ -31,7 +32,9 @@ class AdminProdukController extends Controller
     {
         $produk = Produk::find($id);
 
-        return view('admin.produk.tambah-produk', compact('produk'));
+        $gambar = GambarProduk::where('id_produk', $id)->get();
+        
+        return view('admin.produk.tambah-produk', compact('produk', 'gambar'));
     }
 
     public function tambahPaket()
@@ -70,14 +73,12 @@ class AdminProdukController extends Controller
             $paket->nama = $request->nama;
             $paket->harga = $request->harga;
             $paket->jml_tamu = $request->jml_tamu;
-            $paket->save();
-
+            
             if ($request->detail != null){
-                $paket_detail = new PaketDetail();
-                $paket_detail->id_paket = $paket->id;
-                $paket_detail->isi_paket = $request->detail;
-                $paket_detail->save();
+                $paket->isi_paket = $request->detail;
             }
+            
+            $paket->save();
 
             foreach($request->file('gambar_paket') as $img){
                 $filename = date('Ymd') . $img->getClientOriginalName();
@@ -101,14 +102,12 @@ class AdminProdukController extends Controller
             $paket->nama = $request->nama;
             $paket->harga = $request->harga;
             $paket->jml_tamu = $request->jml_tamu;
-            $paket->save();
 
             if ($request->detail != null){
-                $paket_detail = PaketDetail::where('id_paket', $request->id)->first();
-                $paket_detail->id_paket = $paket->id;
-                $paket_detail->isi_paket = $request->detail;
-                $paket_detail->save();
+                $paket->isi_paket = $request->detail;
             }
+
+            $paket->save();
 
             foreach($request->file('gambar_paket') as $img){
                 $filename = date('Ymd') . $img->getClientOriginalName();
@@ -138,11 +137,6 @@ class AdminProdukController extends Controller
             $paket->delete();
         }
 
-        $paket_detail = PaketDetail::where('id_paket', $id)->first();
-        if ($paket_detail){
-            $paket_detail->delete();
-        } 
-
         $gambar = GambarPaket::where('id_paket', $id)->get();
         if ($gambar){
             foreach($gambar as $img){
@@ -159,22 +153,32 @@ class AdminProdukController extends Controller
         $request->validate([
             'nama' => 'required',
             'harga' => 'required|numeric',
+            'gambar-1' => 'image',
+            'gambar-2' => 'image',
+            'gambar-3' => 'image',
+            'gambar-4' => 'image',
+            'gambar-5' => 'image',
+            'gambar-6' => 'image',
         ]);
 
         $produk = new Produk();
-        // jika ada gambarnya baru bisa masuk ke database
-        if($request->file('img')){
-            $file = $request->file('img');
-            $filename = date('YmdHi').$file->getClientOriginalName(); //buat nama filenya
-            $file-> move(public_path('public/produk'), $filename); //simpan fotonya ke folder public/produkk
-
-            $produk->img = $filename;
-        }
         // simpan ke databasenya
         // sesuai nama kolom table databse =  sesuai nama form input
         $produk->nama_produk = $request->nama;
         $produk->harga = $request->harga;
         $produk->save();
+
+        // jika ada gambarnya baru bisa masuk ke database
+        for ($i = 1; $i <= 6; $i++) {
+            if ($request->file('gambar-'.$i)) {
+                $filename = date('Ymd') . $request->file('gambar-'.$i)->getClientOriginalName();//buat nama filenya
+                $request->file('gambar-'.$i)->move(public_path(). '/produk/detail', $filename);//simpan fotonya ke folder public/produk/detail
+                $gambar = new GambarProduk();
+                $gambar->id_produk = $produk->id;
+                $gambar->img = $filename;
+                $gambar->save();
+            }
+        }
         
         return redirect()->route('admin.produk');
     }
@@ -182,6 +186,32 @@ class AdminProdukController extends Controller
     public function updateProduk(Request $request)
     {
         $produk = Produk::find($request->id);
+        $gambar = GambarProduk::where('id_produk', $request->id)->get();
+
+        for ($i = 1; $i <= 6; $i++) {
+            if ($request->has('gambar-'.$i)) {
+                if (isset($gambar[$i-1])){
+                    $filename = date('Ymd') . $request->file('gambar-'.$i)->getClientOriginalName();
+                    $move = $request->file('gambar-'.$i)->move(public_path(). '/produk/detail', $filename);
+                    if ($move){
+                        File::delete(public_path(). '/produk/detail/'.$request->input('picture_'.$i));
+                        GambarProduk::where('id', $gambar[$i-1]->id)->update(['img' => $filename]);
+                    }
+                } else {
+                    $filename = date('Ymd') . $request->file('gambar-'.$i)->getClientOriginalName();
+                    $move = $request->file('gambar-'.$i)->move(public_path(). '/produk/detail', $filename);
+                    $gambar = new GambarProduk();
+                    $gambar->id_produk = $produk->id;
+                    $gambar->img = $filename;
+                    $gambar->save();
+                }
+            } else {
+                if (isset($gambar[$i-1]) && $request->input('picture_'.$i) == null){
+                    File::delete(public_path(). '/produk/detail/'.$gambar[$i-1]->img);
+                    $gambar[$i-1]->delete();
+                }
+            }
+        }
 
         $produk->nama_produk = $request->nama;
         $produk->harga = $request->harga;
