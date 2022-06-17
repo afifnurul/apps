@@ -204,7 +204,7 @@
                   </svg>
                 </div>
               </label>
-              <input type="file" name="gambar-1" id="gambar-1" class="d-none"/>
+              <input type="file" accept="image/*"  name="gambar-1" id="gambar-1" class="d-none"/>
             </td>
             <td width="10px"></td>
             <td>
@@ -216,7 +216,7 @@
                   </svg>
                 </div>
               </label>
-              <input type="file" name="gambar-2" id="gambar-2" class="d-none"/>
+              <input type="file" accept="image/*"  name="gambar-2" id="gambar-2" class="d-none"/>
             </td>
             <td width="10px"></td>
             <td>
@@ -228,7 +228,7 @@
                   </svg>
                 </div>
               </label>
-              <input type="file" name="gambar-3" id="gambar-3" class="d-none"/>
+              <input type="file" accept="image/*"  name="gambar-3" id="gambar-3" class="d-none"/>
             </td>
           </tr>
           <tr height="10px"></tr>
@@ -242,7 +242,7 @@
                   </svg>
                 </div>
               </label>
-              <input type="file" name="gambar-4" id="gambar-4" class="d-none"/>
+              <input type="file" accept="image/*"  name="gambar-4" id="gambar-4" class="d-none"/>
             </td>
             <td width="10px"></td>
             <td>
@@ -254,7 +254,7 @@
                   </svg>
                 </div>
               </label>
-              <input type="file" name="gambar-5" id="gambar-5" class="d-none"/>
+              <input type="file" accept="image/*"  name="gambar-5" id="gambar-5" class="d-none"/>
             </td>
             <td width="10px"></td>
             <td>
@@ -266,7 +266,7 @@
                   </svg>
                 </div>
               </label>
-              <input type="file" name="gambar-6" id="gambar-6" class="d-none"/>
+              <input type="file" accept="image/*"  name="gambar-6" id="gambar-6" class="d-none"/>
             </td>
           </tr>
         </table>

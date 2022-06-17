@@ -223,6 +223,13 @@ class AdminProdukController extends Controller
     public function DeleteProduk($id)
     {
         $produks = Produk::find($id);
+        $gambar = GambarProduk::where('id_produk', $id)->get();
+        if($gambar){
+            foreach($gambar as $img){
+                File::delete(public_path(). '/produk/detail/'.$img->img);
+                $img->delete();
+            }
+        }
         $produks->delete();
 
         return redirect()->route('admin.produk');
