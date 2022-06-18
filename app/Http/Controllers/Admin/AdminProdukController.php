@@ -50,11 +50,18 @@ class AdminProdukController extends Controller
     {
         $paket= Paket::find($id);
 
+        $detail = $paket->isi_paket;
+        $detail = explode(',', $detail);
+        $ket = $paket->keterangan;
+        $ket = explode(',', $ket);
+
         $produks = Produk::all();
 
         $kategoris = Kategori::all();
 
-        return view('admin.produk.tambah-paket', compact('paket', 'produks', 'kategoris'));
+        $gambar = GambarPaket::where('id_paket', $id)->get();
+
+        return view('admin.produk.tambah-paket', compact('paket', 'produks', 'kategoris', 'gambar', 'detail', 'ket'));
     }
 
     public function storePaket(Request $request)
@@ -64,70 +71,98 @@ class AdminProdukController extends Controller
             'jml_tamu' => 'nullable',
             'harga' => 'required|numeric',
             'kategori' => 'required',
-            'gambar_paket' => 'required',
+            'gambar-1' => 'image',
+            'gambar-2' => 'image',
+            'gambar-3' => 'image',
+            'gambar-4' => 'image',
+            'gambar-5' => 'image',
+            'gambar-6' => 'image',
         ]);
 
-        if($request->file('gambar_paket')){
-            $paket = new Paket();
-            $paket->id_kategori = $request->kategori;
-            $paket->nama = $request->nama;
-            $paket->harga = $request->harga;
-            $paket->jml_tamu = $request->jml_tamu;
-            
-            if ($request->detail != null){
-                $paket->isi_paket = $request->detail;
+        $paket  = new Paket();
+        $paket->nama = $request->nama;
+        $paket->harga = $request->harga;
+        $paket->jml_tamu = $request->jml_tamu;
+        $paket->id_kategori = $request->kategori;
+        $checked    = $request->checkbox;
+        $data       = $request->detail;
+        $keterangan = $request->keterangan;
+        foreach ($data as $key => $value) {
+            if (in_array($data[$key], $checked)) {
+                $paket->isi_paket .= $data[$key].',';
+                $paket->keterangan .= $keterangan[$key].',';
+            } else {
+                $paket->isi_paket .= ',';
+                $paket->keterangan .= ',';
             }
-            
-            $paket->save();
+        }
+        $paket->save();
 
-            foreach($request->file('gambar_paket') as $img){
-                $filename = date('Ymd') . $img->getClientOriginalName();
-                $img->move(public_path(). '/paket/detail', $filename);
+        for ($i = 1; $i <= 6; $i++) {
+            if ($request->file('gambar-'.$i)) {
+                $filename = date('Ymd') . $request->file('gambar-'.$i)->getClientOriginalName();//buat nama filenya
+                $request->file('gambar-'.$i)->move(public_path(). '/paket/detail', $filename);//simpan fotonya ke folder public/produk/detail
                 $gambar = new GambarPaket();
                 $gambar->id_paket = $paket->id;
                 $gambar->img = $filename;
                 $gambar->save();
             }
-
-            return redirect()->route('admin.produk');
         }
+
+        return redirect()->route('admin.produk')->with('success', 'Paket berhasil ditambahkan');
+
     }
 
     public function updatePaket(Request $request)
     {
         $paket = Paket::find($request->id);
 
-        if($request->file('gambar_paket')){
-            $paket->id_kategori = $request->kategori;
-            $paket->nama = $request->nama;
-            $paket->harga = $request->harga;
-            $paket->jml_tamu = $request->jml_tamu;
-
-            if ($request->detail != null){
-                $paket->isi_paket = $request->detail;
+        for ($i = 1; $i <= 6; $i++) {
+            if ($request->has('gambar-'.$i)) {
+                if (isset($gambar[$i-1])){
+                    $filename = date('Ymd') . $request->file('gambar-'.$i)->getClientOriginalName();
+                    $move = $request->file('gambar-'.$i)->move(public_path(). '/paket/detail', $filename);
+                    if ($move){
+                        File::delete(public_path(). '/paket/detail/'.$request->input('picture_'.$i));
+                        GambarPaket::where('id', $gambar[$i-1]->id)->update(['img' => $filename]);
+                    }
+                } else {
+                    $filename = date('Ymd') . $request->file('gambar-'.$i)->getClientOriginalName();
+                    $move = $request->file('gambar-'.$i)->move(public_path(). '/paket/detail', $filename);
+                    $gambar = new GambarPaket();
+                    $gambar->id_paket = $paket->id;
+                    $gambar->img = $filename;
+                    $gambar->save();
+                }
+            } else {
+                if (isset($gambar[$i-1]) && $request->input('picture_'.$i) == null){
+                    File::delete(public_path(). '/paket/detail/'.$gambar[$i-1]->img);
+                    $gambar[$i-1]->delete();
+                }
             }
-
-            $paket->save();
-
-            foreach($request->file('gambar_paket') as $img){
-                $filename = date('Ymd') . $img->getClientOriginalName();
-                $img->move(public_path(). '/paket/detail', $filename);
-                $gambar = GambarPaket::where('id_paket', $request->id)->get();
-                $gambar->id_paket = $paket->id;
-                $gambar->img = $filename;
-                $gambar->save();
-            }
-
-            return redirect()->route('admin.produk');
         }
 
-        // $paket->nama = $request->nama;
-        // $paket->harga = $request->harga;
-        // $paket->jml_tamu = $request->jml_tamu;
-        // $paket->id_kategori = $request->kategori;
-        // $paket->save();
+        $paket->nama = $request->nama;
+        $paket->harga = $request->harga;
+        $paket->jml_tamu = $request->jml_tamu;
+        $paket->id_kategori = $request->kategori;
+        $paket->isi_paket = '';
+        $paket->keterangan = '';
+        $checked    = $request->checkbox;
+        $data       = $request->detail;
+        $keterangan = $request->keterangan;
+        foreach ($data as $key => $value) {
+            if (in_array($data[$key], $checked)) {
+                $paket->isi_paket .= $data[$key].',';
+                $paket->keterangan .= $keterangan[$key].',';
+            } else {
+                $paket->isi_paket .= ',';
+                $paket->keterangan .= ',';
+            }
+        }
+        $paket->save();
         
-        // return redirect()->route('admin.produk');
+        return redirect()->route('admin.produk');
     }
 
     public function DeletePaket($id)

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminProdukController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\User\ProfilUserController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,13 +23,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 // route user ataupun guest
-Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth', 'guest');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('guest');
 
 Route::get('/home', function(){
     return view('home');
 });
 
-Route::get('detail/{id}', [HomeController::class, 'detail'])->name('detail')->middleware('auth', 'guest');
+Route::get('detail/{id}', [HomeController::class, 'detail'])->name('detail')->middleware('guest');
 
 // Route laravel ui untuk handle authentikasi user
 Auth::routes();

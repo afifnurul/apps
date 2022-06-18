@@ -7,7 +7,6 @@ use App\Models\Galeri;
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\GambarPaket;
-use App\Models\PaketDetail;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,8 +27,6 @@ class HomeController extends Controller
         $paket = Paket::find($id);
 
         $gambar = GambarPaket::where('id_paket', $id)->get();
-
-        $detail = PaketDetail::where('id_paket', $id)->get();
         
         return view('detail', compact('paket', 'gambar', 'detail'));
     }
