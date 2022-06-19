@@ -19,6 +19,7 @@ class CreatePaketTable extends Migration
             $table->string('nama');
             $table->integer('harga');
             $table->text('isi_paket');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }
