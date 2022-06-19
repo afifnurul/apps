@@ -23,13 +23,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 // route user ataupun guest
-Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('guest');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/home', function(){
     return view('home');
 });
 
-Route::get('detail/{id}', [HomeController::class, 'detail'])->name('detail')->middleware('guest');
+Route::get('detail/{id}', [HomeController::class, 'detail'])->name('detail');
 
 // Route laravel ui untuk handle authentikasi user
 Auth::routes();

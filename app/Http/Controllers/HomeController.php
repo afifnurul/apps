@@ -28,7 +28,7 @@ class HomeController extends Controller
 
         $gambar = GambarPaket::where('id_paket', $id)->get();
         
-        return view('detail', compact('paket', 'gambar', 'detail'));
+        return view('detail', compact('paket', 'gambar'));
     }
     
 }

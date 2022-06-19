@@ -65,9 +65,31 @@
                 </div>
                 <div id="collapseOne" class="collapse show " data-parent="#accordion">
                     <div class="card-body font-weight-light">
-                        @foreach ($detail as $item)
-                            <span id="isi_paket">{{ $item->isi_paket }}</span>
-                        @endforeach
+                        @php
+                            $detail     = $paket->isi_paket;
+                            $detail     = explode(',', $detail);
+                            $keterangan = $paket->keterangan;
+                            $keterangan = explode(',', $keterangan); 
+                        @endphp
+                        <table>
+                            <tr>
+                                <td>
+                                    @foreach ($detail as $item)
+                                    @if ($item != '')
+                                        <span id="isi_paket">{{ $item }}</span><br>
+                                    @endif
+                                    @endforeach
+                                </td>
+                                <td width="10"></td>
+                                <td>
+                                    @foreach ($keterangan as $item)
+                                    @if ($item != '')
+                                    <span id="keterangan">{{ $item }}</span><br>
+                                    @endif
+                                    @endforeach
+                                </td>
+                            </tr>
+                        </table>
                         {{-- Dekor 6m Mix Simpel <br>
                         Meja Kursi Akad<br>
                         Stand Foto 2<br>
