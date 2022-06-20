@@ -18,8 +18,9 @@ class CreatePaketTable extends Migration
             $table->foreignId('id_kategori');
             $table->string('nama');
             $table->integer('harga');
-            $table->text('isi_paket');
-            $table->text('keterangan');
+            $table->text('isi_paket')->nullable();
+            $table->text('keterangan')->nullable();
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }

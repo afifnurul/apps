@@ -33,7 +33,6 @@
             </div>
 
             <div id="accordion mt-3">
-                @if($paket->kategorinya->nama != 'Lain-lain') 
                 <div class="card" style="border-color: #c88a72">
               
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
@@ -44,14 +43,16 @@
                               $harga = number_format($harga, 0, '', '.');
                           @endphp
                           Rp. {{ $harga }}</b></h4>
-                      </div><hr width="100px" class="col-md-5 offset-md-3">
+                      </div>
+                      @if ($paket->jumlah_tamu != 0)
+                      <hr width="100px" class="col-md-5 offset-md-3">
                       <div class="mx-3 d-flex justify-content-between">
                         <p>Jumlah Tamu </p>
                         <p>-/+ {{ $paket->jml_tamu}}</p>
                       </div>
+                      @endif
                     </div>
                 </div>
-                @endif
     
                 <div class="mt-4 mr-4">
                     <a href="{{ route('pesan-sekarang', ['id' => $paket->id]) }}" role="button" class="btn" style="width: 40%; background-color:#c88a72;"><img src="{{ asset('img/chat.png')}}" style="color: white" width="18" height="20" alt=""> Chat</button>
@@ -65,6 +66,10 @@
                 </div>
                 <div id="collapseOne" class="collapse show " data-parent="#accordion">
                     <div class="card-body font-weight-light">
+                        @if (isset($paket->deskripsi))
+                            {!! $paket->deskripsi !!}
+                            
+                        @endif
                         @php
                             $detail     = $paket->isi_paket;
                             $detail     = explode(',', $detail);

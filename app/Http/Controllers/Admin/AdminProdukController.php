@@ -87,15 +87,18 @@ class AdminProdukController extends Controller
         $checked    = $request->checkbox;
         $data       = $request->detail;
         $keterangan = $request->keterangan;
-        foreach ($data as $key => $value) {
-            if (in_array($data[$key], $checked)) {
-                $paket->isi_paket .= $data[$key].',';
-                $paket->keterangan .= $keterangan[$key].',';
-            } else {
-                $paket->isi_paket .= ',';
-                $paket->keterangan .= ',';
+        if (isset($detail)){
+            foreach ($data as $key => $value) {
+                if (in_array($data[$key], $checked)) {
+                    $paket->isi_paket .= $data[$key].',';
+                    $paket->keterangan .= $keterangan[$key].',';
+                } else {
+                    $paket->isi_paket .= ',';
+                    $paket->keterangan .= ',';
+                }
             }
         }
+        $paket->deskripsi = $request->deskripsi;
         $paket->save();
 
         for ($i = 1; $i <= 6; $i++) {

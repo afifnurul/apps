@@ -16,6 +16,19 @@
           <label for="inputAddress">Nama Paket</label>
           <input type="text" class="form-control" name="nama" value="{{ $paket->nama }}" id="inputAddress" placeholder="Paket Gold">
         </div>
+        <div class="form-group w-100">
+          <label for="inputState">Kategori</label>
+          <select id="kategori" class="form-control" name="kategori">
+            <option disabled selected>--Pilih Kategori--</option>
+            @if (isset($kategoris))
+                
+              @foreach ($kategoris as $kategori)
+                  <option value="{{ $kategori->id }}" {{ ($paket->kategorinya->nama == $kategori->nama) ? 'selected' : '' }}>{{ $kategori->nama }}</option>
+              @endforeach
+
+            @endif
+          </select>
+        </div>
         <div class="form-group d-flex w-100">
           <div>
             <label for="inputAddress">Harga</label>
@@ -30,19 +43,6 @@
             <label for="inputTamu">Jumlah Tamu</label>
             <input type="text" class="form-control" value="{{ $paket->jml_tamu }}" name="jml_tamu" id="inputTamu" placeholder="100">
           </div>
-        </div>
-        <div class="form-group w-100">
-          <label for="inputState">Kategori</label>
-          <select id="kategori" class="form-control" name="kategori">
-            <option disabled selected>--Pilih Kategori--</option>
-            @if (isset($kategoris))
-                
-              @foreach ($kategoris as $kategori)
-                  <option value="{{ $kategori->id }}" {{ ($paket->kategorinya->nama == $kategori->nama) ? 'selected' : '' }}>{{ $kategori->nama }}</option>
-              @endforeach
-
-            @endif
-          </select>
         </div>
         <div class="form-group w-100" id="detail-barang">
           <label for="inputAddress">Detail</label>
@@ -245,21 +245,6 @@
             <label for="inputAddress">Nama Paket</label>
             <input type="text" class="form-control" name="nama" id="inputAddress" placeholder="Paket Gold">
           </div>
-          <div class="form-group d-flex w-100">
-            <div>
-              <label for="inputAddress">Harga</label>
-              <div class="input-group mb-2 mr-sm-2">
-                  <div class="input-group-prepend">
-                  <div class="input-group-text">Rp</div>
-                  </div>
-                  <input type="text" class="form-control" name="harga" id="inlineFormInputGroupUsername2" placeholder="1300000">
-              </div>
-            </div>
-            <div class="ml-4">
-              <label for="inputTamu">Jumlah Tamu</label>
-              <input type="text" class="form-control" name="jml_tamu" id="inputTamu" placeholder="100">
-            </div>
-          </div>
           <div class="form-group w-100">
             <label for="inputState">Kategori</label>
             <select id="kategori" class="form-control" name="kategori">
@@ -272,6 +257,21 @@
 
               @endif
             </select>
+          </div>
+          <div class="form-group d-flex w-100">
+            <div>
+              <label for="inputAddress">Harga</label>
+              <div class="input-group mb-2 mr-sm-2">
+                  <div class="input-group-prepend">
+                  <div class="input-group-text">Rp</div>
+                  </div>
+                  <input type="text" class="form-control" name="harga" id="inlineFormInputGroupUsername2" placeholder="1300000">
+              </div>
+            </div>
+            <div class="ml-4" id="jml_tamu">
+              <label for="inputTamu">Jumlah Tamu</label>
+              <input type="text" class="form-control" name="jml_tamu" id="inputTamu" placeholder="100">
+            </div>
           </div>
           <div class="form-group w-100" id="detail-barang">
             <label for="inputAddress">Detail</label>
@@ -286,6 +286,10 @@
                 </div>
             </div>
             @endforeach
+          </div>
+          <div class="form-group w-100 d-none" id="deskripsi">
+            <label for="inputAddress">Deskripsi</label>
+            <textarea class="form-control" name="deskripsi" id="inputAddress" rows="3"></textarea>
           </div>
         </div>
         {{-- bagian kanan --}}
@@ -403,9 +407,15 @@
   kat.addEventListener('change', function(){
     if(kat.value == '3'){
       document.querySelector('#detail-barang').style.display = 'none';
+      document.querySelector('#jml_tamu').style.display = 'none';
       document.querySelector('#deskripsi').classList.remove('d-none');
+    } else if(kat.value == '2'){
+      document.querySelector('#detail-barang').style.display = 'block';
+      document.querySelector('#jml_tamu').style.display = 'none';
+      document.querySelector('#deskripsi').classList.add('d-none');
     } else {
       document.querySelector('#detail-barang').style.display = 'block';
+      document.querySelector('#jml_tamu').style.display = 'block';
       document.querySelector('#deskripsi').classList.add('d-none');
     }
   });
