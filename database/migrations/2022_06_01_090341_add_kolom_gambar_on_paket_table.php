@@ -15,7 +15,6 @@ class AddKolomGambarOnPaketTable extends Migration
     {
         Schema::table('paket', function (Blueprint $table){
             $table->integer('jml_tamu')->nullable();
-            $table->string('gambar')->nullable();
         });
     }
 
@@ -28,7 +27,6 @@ class AddKolomGambarOnPaketTable extends Migration
     {
         Schema::table('paket', function (Blueprint $table){
             $table->dropColumn('jml_tamu');
-            $table->dropColumn('gambar');
         });
     }
 }

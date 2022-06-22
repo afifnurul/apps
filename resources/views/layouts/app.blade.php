@@ -85,14 +85,14 @@
         
     @include('navigation.top-nav')
 
-    <div class="jumbotron -m-4" style="background-image: url(img/landpage4.png); height:430px; ">
+    <div class="jumbotron -m-4" style="background-image: url(img/landpage6.png);">
         <div class="d-flex justify-content-end mt-5"></div>
         <div class="d-flex justify-content-end mt-5"></div>
         <div class="d-flex justify-content-end mt-5"></div>
         <div class="d-flex justify-content-end mt-5"></div>
         <div class="d-flex justify-content-end mt-3"></div>
         <div class="d-flex justify-content-center mt-5 ml-5">
-            <button class="btn btn-outline-dark " style="width: 8rem; height: 2.75rem; position: absolute; right: 34rem; margin-top: -0.25rem; background-color: #c88a72; color: white; border: 1px solid white">Book Now</button>
+            <button class="btn btn-outline-dark " style="width: 8rem; height: 2.7rem; position: absolute; right: 40rem; margin-top: -1rem; background-color: #c88a72; color: white; border: 1px solid white">Book Now</button>
         </div>       
     </div>
     

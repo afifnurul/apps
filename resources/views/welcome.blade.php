@@ -53,7 +53,7 @@
                                                                                 @php
                                                                                     $harga = $paket->harga;
                                                                                     $harga = number_format($harga, 0, '', '.')
-                                                                                @endphp
+                                                                                @endphp 
                                                                             Rp. {{ $harga }}
                                                                             </div>
                                                                         </div>
