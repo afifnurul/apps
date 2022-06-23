@@ -52,6 +52,7 @@
             $keterangan = explode(',', $paket->keterangan);
           @endphp
           @foreach ($produks as $produk)
+          @if(isset($detail[$i]))
           <div class="input-group d-flex align-items-center mb-2">
               <div>
                 <input type="checkbox" name="checkbox[]" {{ ($produk->nama_produk == $detail[$i]) ? 'checked' : '' }} value="{{ $produk->nama_produk }}"> {{ $produk->nama_produk }}
@@ -61,6 +62,7 @@
                 <input type="text" name="keterangan[]" value="{{ $keterangan[$i] }}" class="form-control" placeholder="100">
               </div>
           </div>
+          @endif
           @php
             $i++;
           @endphp
