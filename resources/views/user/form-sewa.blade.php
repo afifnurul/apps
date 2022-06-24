@@ -22,7 +22,7 @@
                     </div>
                 <div class="form-group">
                     <label for="" style="font-family: 'Times New Roman', Times, serif">Tanggal Acara</label>
-                    <input type="date" class="form-control" id="tgl_acara" onchange="acara()" name="tgl_acara" placeholder="dd/mm/yy">
+                    <input type="date" class="form-control" id="tgl_acara" name="tgl_acara" placeholder="dd/mm/yy">
                 </div>
                 <div class="form-group">
                     <label for="" style="font-family: 'Times New Roman', Times, serif">Tanggal Pengembalian</label>
@@ -44,15 +44,35 @@
         </div>
     </div>
 
-<script>    
-    function acara(){
-        var acara = document.querySelector('#tgl_acara').value;
-        var kembali = document.querySelector('#tgl_kembali');
-        console.log(acara)
-        const date = new Date(acara);
-        date.setDate(date.getDate() + 1);
-        kembali.value = date.toLocaleDateString('id-ID');
-    }
+<script>
+    $(function(){
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+            day = '0' + day.toString();
+        
+        var maxDate = year + '-' + month + '-' + day;
+        $('#tgl_acara').attr('min', maxDate);
+        $('#tgl_acara').on('change', function(){
+            const acara =  $('#tgl_acara').val();
+            $('#tgl_kembali').attr('min', acara);
+            var acaraDay = new Date(acara);
+            var monthAcara = acaraDay.getMonth() + 1;
+            var dayAcara = acaraDay.getDate();
+            var yearAcara = acaraDay.getFullYear();
+            if(monthAcara < 10)
+                monthAcara = '0' + monthAcara.toString();
+            if(dayAcara < 10)
+                dayAcara = '0' + dayAcara.toString();
+            
+            var maxDateKembali = yearAcara + '-' + monthAcara + '-' + (dayAcara + 3);
+            $('#tgl_kembali').attr('max', maxDateKembali);
+        })
+    });
 </script>
 
 @endsection
