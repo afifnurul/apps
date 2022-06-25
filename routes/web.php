@@ -3,9 +3,11 @@
 use App\Http\Controllers\Admin\AdminGaleriController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminKategoriController;
+use App\Http\Controllers\Admin\AdminPesananController;
 use App\Http\Controllers\Admin\AdminProdukController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\User\PesanController;
 use App\Http\Controllers\User\ProfilUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +38,12 @@ Auth::routes();
 
 // route untuk user yang sudah login
 Route::group(['middleware' => ['auth']], function(){
-    Route::get('/profil/{id}', [ProfilUserController::class, 'index'])->name('profil');
+    Route::prefix('profil')->group(function(){
+        Route::get('/', [ProfilUserController::class, 'index'])->name('user.profil');
+    });
+    Route::prefix('pesanan')->group(function(){
+        Route::get('/', [PesanController::class, 'index'])->name('user.pesanan');
+    });
     Route::get('/pesan-sekarang/{id}', [TransaksiController::class, 'index'])->name('pesan-sekarang');
     Route::post('/pesan-sekarang', [TransaksiController::class, 'simpanSewa'])->name('user.simpanSewa');
     Route::post('/tambah-produk', [AdminProdukController::class, 'storeProduk'])
@@ -47,10 +54,13 @@ Route::group(['middleware' => ['auth']], function(){
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(){
     Route::get('/', [AdminHomeController::class, 'index'])
         ->name('admin.home');
-    Route::get('/profile/{id}', [AdminHomeController::class, 'editProfil'])->name('admin.profile');
-    Route::get('/pesanan', function(){
-        return view('admin.pesanan');
-    })->name('admin.pesanan');
+    Route::get('/profile', [AdminHomeController::class, 'editProfil'])->name('admin.profile');
+    Route::prefix('pesanan')->group(function(){
+        Route::get('/', [AdminPesananController::class, 'index'])->name('admin.pesanan');
+        Route::get('/respons/{id}', [AdminPesananController::class, 'detail'])->name('admin.pesanan.respons');
+        Route::get('/{id}/terima', [AdminPesananController::class, 'terima'])->name('admin.pesanan.terima');
+        Route::get('/{id}/tolak', [AdminPesananController::class, 'tolak'])->name('admin.pesanan.tolak');
+    });
     Route::post('/editProfile', function(){
         return view('admin.profile');
     })->name('admin.editProfile');

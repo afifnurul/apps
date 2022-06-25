@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 
 class ProfilUserController extends Controller
 {
-    public function index($id)
+    public function index()
     {
-        $profil = User::find($id);
+        $profil = User::find(auth()->user()->id);
 
         return view('user.profil', compact('profil'));
     }

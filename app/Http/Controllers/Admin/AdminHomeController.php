@@ -14,9 +14,9 @@ class AdminHomeController extends Controller
         return view('admin.home');
     }
 
-    public function editProfil($id)
+    public function editProfil()
     {
-        $profil = User::find($id);
+        $profil = User::find(auth()->user()->id);
 
         return view('admin.profile', compact('profil'));
     }

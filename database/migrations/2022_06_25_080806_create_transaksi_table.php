@@ -14,12 +14,10 @@ class CreateTransaksiTable extends Migration
     public function up()
     {
         Schema::create('transaksi', function (Blueprint $table) {
-            $table->string('kd_transaksi');
-            $table->date('tgl_transaksi')->now();
-            $table->string('lokasi_acara');
-            $table->date('tgl_acara');
-            $table->date('tgl_pengembalian');
-            $table->string('catatan')->nullable();
+            $table->id();
+            $table->foreignId('id_pesanan');
+            $table->integer('total');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

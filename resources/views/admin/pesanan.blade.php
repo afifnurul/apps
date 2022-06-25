@@ -21,34 +21,47 @@
           <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Id Customer</th>
-                  <th scope="col">Kode Transaksi</th>
-                  <th scope="col">Tanggal Acara</th>
-                  <th scope="col">Lokasi Acara</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Aksi</th>
+                  <td scope="col">No</td>
+                  <td scope="col">Nama Paket</td>
+                  <td scope="col">Lokasi Acara</td>
+                  <td scope="col">Alamat Lokasi</td>
+                  <td scope="col">Tanggal Acara</td>
+                  <td scope="col">Tanggal Pengembalian</td>
+                  <td scope="col">Status</td>
+                  <td scope="col">Aksi</td>
                 </tr>
               </thead>
               <tbody>
+                @php
+                    $no = 1;
+                @endphp
+                @if (isset($pesanan))
+                @foreach ($pesanan as $data)  
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                    <th scope="row">{{$no}}</th>
+                    <td>{{ $data->paketnya->nama}}</td>
+                    <td>{{ $data->lokasi }}</td>
+                    <td>{{ $data->alamat_acara }}</td>
+                    <td>{{ App\Http\Controllers\User\PesanController::tglID($data->tgl_acara) }}</td>
+                    <td>{{ App\Http\Controllers\User\PesanController::tglID($data->tgl_kembali) }}</td>
+                    <td>
+                      @if ($data->status == 'menunggu')
+                      <span class="badge badge-warning">{{ $data->status }}</span>                      
+                      @elseif ($data->status == 'diterima')
+                      <span class="badge badge-success">{{ $data->status }}</span>                      
+                      @elseif ($data->status == 'ditolak')
+                      <span class="badge badge-danger">{{ $data->status }}</span>                      
+                      @endif
+                    </td>
+                    @if ($data->status)
+                        <td>
+                            <a href="{{ route('admin.pesanan.respons' , ['id' => $data->id]) }}" class="btn btn-primary">Respons</a>
+                        </td>
+                    @endif
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+                <?php $no++; ?>
+                @endforeach
+                @endif
               </tbody>
             </table>
       

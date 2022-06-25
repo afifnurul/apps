@@ -19,7 +19,11 @@
                             <option value="Gedung">Gedung</option>
                             <option value="Rumah">Rumah</option>
                         </select>
-                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" style="font-family: 'Times New Roman', Times, serif">Alamat Lokasi Acara</label>
+                    <textarea class="form-control" id="alamat_acara" name="alamat_acara" rows="3" placeholder="Alamat lokasi acara"></textarea>
+                </div>
                 <div class="form-group">
                     <label for="" style="font-family: 'Times New Roman', Times, serif">Tanggal Acara</label>
                     <input type="date" class="form-control" id="tgl_acara" name="tgl_acara" placeholder="dd/mm/yy">
@@ -30,9 +34,10 @@
                 </div>
                 <div class="form-group">
                     <label for="" style="font-family: 'Times New Roman', Times, serif">Nama Paket</label>
-                    <select class="custom-select" disabled name="nama_paket" id="inputGroupSelect02">
+                    <select class="custom-select" disabled id="inputGroupSelect02">
                         <option value="{{ $sewa->id }}" selected>{{ $sewa->nama }}</option>
                     </select>
+                    <input type="hidden" name="nama_paket" value="{{ $sewa->id }}">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1" style="font-family: 'Times New Roman', Times, serif">Catatan</label>
@@ -59,17 +64,27 @@
         $('#tgl_acara').attr('min', maxDate);
         $('#tgl_acara').on('change', function(){
             const acara =  $('#tgl_acara').val();
+            console.log(acara);
             $('#tgl_kembali').attr('min', acara);
             var acaraDay = new Date(acara);
             var monthAcara = acaraDay.getMonth() + 1;
-            var dayAcara = acaraDay.getDate();
+            var dayAcara = acaraDay.getDate() + 3;
             var yearAcara = acaraDay.getFullYear();
             if(monthAcara < 10)
                 monthAcara = '0' + monthAcara.toString();
             if(dayAcara < 10)
                 dayAcara = '0' + dayAcara.toString();
-            
-            var maxDateKembali = yearAcara + '-' + monthAcara + '-' + (dayAcara + 3);
+            var jml = new Date(yearAcara, monthAcara, 0).getDate();
+            if(dayAcara > jml){
+                dayAcara = dayAcara - jml;
+                monthAcara = acaraDay.getMonth() + 2;
+                if(monthAcara < 10)
+                    monthAcara = '0' + monthAcara.toString();
+                if(dayAcara < 10)
+                    dayAcara = '0' + dayAcara.toString();
+            }
+            var maxDateKembali = (yearAcara + '-' + monthAcara + '-' +dayAcara)
+            console.log(maxDateKembali)
             $('#tgl_kembali').attr('max', maxDateKembali);
         })
     });

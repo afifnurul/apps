@@ -14,7 +14,7 @@
                     </a><hr>
                 </li>
                 <li class="nav-item  mb-2">
-                    <a class="nav-link active" style="font-size: 18px;" href="{{ route('admin.profile', ['id' => auth()->user()->id ]) }}">
+                    <a class="nav-link" style="font-size: 18px; {{ Request::is('admin/profile') ? 'background-color: brown' : '' }}" href="{{ route('admin.profile') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 <li class="nav-item  mb-2">
-                    <a class="nav-link" style="font-size: 18px;" href="{{ route('admin.pesanan') }}">
+                    <a class="nav-link" style="font-size: 18px; {{ Request::is('admin/pesanan') ? 'background-color: brown' : '' }}" href="{{ route('admin.pesanan') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                             <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
                             <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
@@ -30,21 +30,21 @@
                     </a>
                 </li>
                 <li class="nav-item  mb-2">
-                    <a class="nav-link" style="font-size: 18px;" href="{{ route('admin.kategori') }}">
+                    <a class="nav-link" style="font-size: 18px; {{ Request::is('admin/kategori') ? 'background-color: brown' : '' }}" href="{{ route('admin.kategori') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-grid-1x2" viewBox="0 0 16 16">
                             <path d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9v5h-5v-5h5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/>
                         </svg>                Kategori
                     </a>
                 </li>
                 <li class="nav-item  mb-2">
-                    <a class="nav-link" style="font-size: 18px;" href="{{ route('admin.produk') }}">
+                    <a class="nav-link" style="font-size: 18px; {{ Request::is('admin/produk') ? 'background-color: brown' : '' }}" href="{{ route('admin.produk') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
                             <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
                         </svg>               Produk
                     </a>
                 </li>
                 <li class="nav-item  mb-2">
-                    <a class="nav-link" style="font-size: 18px;" href="{{ route('admin.galeri') }}">
+                    <a class="nav-link" style="font-size: 18px; {{ Request::is('admin/galeri') ? 'background-color: brown' : '' }}" href="{{ route('admin.galeri') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
                             <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
                             <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z"/>
@@ -52,7 +52,7 @@
                     </a>
                 </li>
                 <li class="nav-item  mb-2">
-                    <a class="nav-link" style="font-size: 18px;" href="{{ route('admin.laporan') }}">
+                    <a class="nav-link" style="font-size: 18px; {{ Request::is('admin/laporan') ? 'background-color: brown' : '' }}" href="{{ route('admin.laporan') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
                             <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
                             <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
@@ -139,7 +139,7 @@
                             <img src="{{ asset('img/profile.png') }}" width="30" height="30" alt=""> {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a href="{{ route('profil', ['id' => Auth::user()->id]) }}" class="dropdown-item">Profile</a>
+                            <a href="{{ route('user.profil', ['id' => Auth::user()->id]) }}" class="dropdown-item">Profile</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
