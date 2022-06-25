@@ -55,7 +55,7 @@
                 </div>
     
                 <div class="mt-4 mr-4">
-                    <a href="{{ route('pesan-sekarang', ['id' => $paket->id]) }}" role="button" class="btn" style="width: 40%; background-color:#c88a72;"><img src="{{ asset('img/chat.png')}}" style="color: white" width="18" height="20" alt=""> Chat</button>
+                    <a href="https://wa.me/6281902116563?text=Apakah%20paket%20ini%20ready?" target="_blank" role="button" class="btn" style="width: 40%; background-color:#c88a72;"><img src="{{ asset('img/chat.png')}}" style="color: white" width="18" height="20" alt=""> Chat</button>
                         
                     <a href="{{ route('pesan-sekarang', ['id' => $paket->id]) }}" role="button" id="pesan" class="btn mx-1" style="width: 50%; background-color:#c88a72;">Pesan Sekarang</a>
                 </div>
@@ -95,24 +95,6 @@
                                 </td>
                             </tr>
                         </table>
-                        {{-- Dekor 6m Mix Simpel <br>
-                        Meja Kursi Akad<br>
-                        Stand Foto 2<br>
-                        Kotak uang<br>
-                        Pintu Masuk<br>
-                        Welcome Sign<br>
-                        Tenda Sby 6x20 <br>
-                        Tenda Kerucut<br>
-                        Panggung 6m<br>
-                        Angkringan 3<br>
-                        Meja Lamaran 1<br>
-                        Meja Penerima Tamu 2<br>
-                        Meja Tamu + cover 20<br>
-                        Kursi Tamu + cover 150<br>
-                        grabah 500<br>
-                        termos nasi 3<br>
-                        Kipas Blower 2<br>
-                        Sound + Diesel<br> --}}
                       </div>
                 </div>
             </div>
