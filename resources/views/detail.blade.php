@@ -38,11 +38,11 @@
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                       <div class="card-body mt-3 d-flex justify-content-center">
                           
-                          @php
-                              $harga = $paket->harga;
-                              $harga = number_format($harga, 0, '', '.');
-                          @endphp
-                          Rp. {{ $harga }}</b></h4>
+                            @php
+                                $harga = $paket->harga;
+                                $harga = number_format($harga, 0, '', '.');
+                            @endphp
+                            Rp. {{ $harga }}</b></h4>
                       </div>
                       @if ($paket->jumlah_tamu != 0)
                       <hr width="100px" class="col-md-5 offset-md-3">

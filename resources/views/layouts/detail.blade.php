@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
-    <title>Document</title>
+    <title>Gatro Dekorasi</title>
 </head>
 <body>
 
@@ -53,8 +53,7 @@
         <div class="container">
             
             <div class="ml-5 mr-auto text-white" style="font-family: 'Courier New', Courier, monospace">
-                <img src="{{ asset('img/gatronav1.png') }}" width="35px" height="35px" alt=""> Gatro Dekorasi
-                
+                <img src="{{ asset('img/gatronav1.png') }}" width="35px" height="35px" alt=""> Gatro Dekorasi                
             </div>
             
         </div>

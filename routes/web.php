@@ -31,6 +31,10 @@ Route::get('/home', function(){
     return view('home');
 });
 
+Route::get('/pembayaran', function(){
+    return view('user.pembayaran');
+});
+
 Route::get('detail/{id}', [HomeController::class, 'detail'])->name('detail');
 
 // Route laravel ui untuk handle authentikasi user
