@@ -96,24 +96,6 @@
                             </tr>
                             @endforeach
                         </table>
-                        {{-- Dekor 6m Mix Simpel <br>
-                        Meja Kursi Akad<br>
-                        Stand Foto 2<br>
-                        Kotak uang<br>
-                        Pintu Masuk<br>
-                        Welcome Sign<br>
-                        Tenda Sby 6x20 <br>
-                        Tenda Kerucut<br>
-                        Panggung 6m<br>
-                        Angkringan 3<br>
-                        Meja Lamaran 1<br>
-                        Meja Penerima Tamu 2<br>
-                        Meja Tamu + cover 20<br>
-                        Kursi Tamu + cover 150<br>
-                        grabah 500<br>
-                        termos nasi 3<br>
-                        Kipas Blower 2<br>
-                        Sound + Diesel<br> --}}
                       </div>
                 </div>
             </div>
