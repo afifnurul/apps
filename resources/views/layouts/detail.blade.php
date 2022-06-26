@@ -38,6 +38,12 @@
             margin-right: 75px;
             float: right;
         }
+        @media print
+        {
+            .no-print{
+                display: none!important;
+            }
+        }
 
     </style>
 

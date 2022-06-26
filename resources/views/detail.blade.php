@@ -55,7 +55,7 @@
                 </div>
     
                 <div class="mt-4 mr-4">
-                    <a href="{{ route('pesan-sekarang', ['id' => $paket->id]) }}" role="button" class="btn" style="width: 40%; background-color:#c88a72;"><img src="{{ asset('img/chat.png')}}" style="color: white" width="18" height="20" alt=""> Chat</button>
+                    <a href="https://api.whatsapp.com/send?phone={{ env('no_wa') }}" role="button" class="btn" style="width: 40%; background-color:#c88a72;"><img src="{{ asset('img/chat.png')}}" style="color: white" width="18" height="20" alt=""> Chat</button>
                         
                     <a href="{{ route('pesan-sekarang', ['id' => $paket->id]) }}" role="button" id="pesan" class="btn mx-1" style="width: 50%; background-color:#c88a72;">Pesan Sekarang</a>
                 </div>
@@ -77,23 +77,24 @@
                             $keterangan = explode(',', $keterangan); 
                         @endphp
                         <table>
+                            @foreach ($detail as $key => $value)
                             <tr>
-                                <td>
-                                    @foreach ($detail as $item)
-                                    @if ($item != '')
-                                        <span id="isi_paket">{{ $item }}</span><br>
+                                    @if($detail[$key] != '' && $keterangan[$key] != '')
+                                    <td>
+                                        <span>{{ $detail[$key] }}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{ $keterangan[$key] }}</span>
+                                    </td>
+                                    @else
+                                    <td>
+                                        <span>{{ $detail[$key] }}</span>
+                                    </td>
+                                    <td>
+                                    </td>
                                     @endif
-                                    @endforeach
-                                </td>
-                                <td width="10"></td>
-                                <td>
-                                    @foreach ($keterangan as $item)
-                                    @if ($item != '')
-                                    <span id="keterangan">{{ $item }}</span><br>
-                                    @endif
-                                    @endforeach
-                                </td>
                             </tr>
+                            @endforeach
                         </table>
                         {{-- Dekor 6m Mix Simpel <br>
                         Meja Kursi Akad<br>

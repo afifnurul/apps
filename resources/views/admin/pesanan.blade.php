@@ -50,10 +50,14 @@
                       @elseif ($data->status == 'diterima')
                       <span class="badge badge-success">{{ $data->status }}</span>                      
                       @elseif ($data->status == 'ditolak')
-                      <span class="badge badge-danger">{{ $data->status }}</span>                      
+                      <span class="badge badge-danger">{{ $data->status }}</span>    
+                      @elseif ($data->status == 'menunggu DP')                  
+                      <span class="badge badge-primary">{{ $data->status }}</span>
+                      @elseif ($data->status == 'DP Masuk')                  
+                      <span class="badge badge-success">{{ $data->status }}</span>
                       @endif
                     </td>
-                    @if ($data->status)
+                    @if ($data->status == 'menunggu')
                         <td>
                             <a href="{{ route('admin.pesanan.respons' , ['id' => $data->id]) }}" class="btn btn-primary">Respons</a>
                         </td>

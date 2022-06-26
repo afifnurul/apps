@@ -48,7 +48,7 @@
                                     </td>
                                 @elseif ($data->status == 'diterima')
                                     <td>
-                                        <a href="" role="button" class="btn btn-primary">Pilih Pembayaran</a>
+                                        <a href="{{ route('pilih.pembayaran', ['id' => $data->id]) }}" role="button" class="btn btn-primary">Pilih Pembayaran</a>
                                     </td>
                                 @endif
                             </tr>

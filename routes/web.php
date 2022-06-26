@@ -52,6 +52,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/pesan-sekarang', [TransaksiController::class, 'simpanSewa'])->name('user.simpanSewa');
     Route::post('/tambah-produk', [AdminProdukController::class, 'storeProduk'])
             ->name('admin.produk.simpanProduk');
+    Route::get('/{id}/metode-pembayaran', [PesanController::class, 'metodePembayaran'])->name('pilih.pembayaran');
+    Route::prefix('tagihan')->group(function(){
+        Route::get('/', [TransaksiController::class, 'tagihan'])->name('user.tagihan');
+        Route::post('/', [TransaksiController::class, 'bayar'])->name('tagihan');
+
+    });
 });
 
 // Route views admin

@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\TransaksiController;
 
 class AdminPesananController extends Controller
 {
     public function index()
     {
+        TransaksiController::statusTransaksi();
+        
         $pesanan = Pesanan::all();
         
         return view('admin.pesanan', compact('pesanan'));

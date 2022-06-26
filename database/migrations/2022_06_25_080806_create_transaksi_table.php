@@ -14,9 +14,12 @@ class CreateTransaksiTable extends Migration
     public function up()
     {
         Schema::create('transaksi', function (Blueprint $table) {
-            $table->id();
+            $table->string('kd_transaksi', 20)->primary();
             $table->foreignId('id_pesanan');
             $table->integer('total');
+            $table->string('metode');
+            $table->string('rekening');
+            $table->dateTime('expired');
             $table->string('status')->default('pending');
             $table->timestamps();
         });

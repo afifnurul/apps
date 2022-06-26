@@ -7,12 +7,15 @@ use App\Models\Galeri;
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\GambarPaket;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        TransaksiController::statusTransaksi();
+
         $carousels = Galeri::all();
 
         $pakets = Paket::all();
