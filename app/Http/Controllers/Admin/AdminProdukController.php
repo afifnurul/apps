@@ -20,12 +20,12 @@ class AdminProdukController extends Controller
         $produk = Produk::all();
         $pakets = Paket::all();
 
-        return view('admin.produk.index', compact('pakets', 'produk'));
+        return view('admin-template.produk.index', compact('pakets', 'produk'));
     }
 
     public function tambahProduk()
     {
-        return view('admin.produk.tambah-produk');
+        return view('admin-template.produk.tambah-produk');
     }
 
     public function editProduk($id)
@@ -34,7 +34,7 @@ class AdminProdukController extends Controller
 
         $gambar = GambarProduk::where('id_produk', $id)->get();
         
-        return view('admin.produk.tambah-produk', compact('produk', 'gambar'));
+        return view('admin-template.produk.tambah-produk', compact('produk', 'gambar'));
     }
 
     public function tambahPaket()
@@ -43,7 +43,7 @@ class AdminProdukController extends Controller
 
         $produks = Produk::all();
 
-        return view('admin.produk.tambah-paket', compact('kategoris', 'produks'));
+        return view('admin-template.produk.tambah-paket', compact('kategoris', 'produks'));
     }
 
     public function editPaket($id)
@@ -61,7 +61,7 @@ class AdminProdukController extends Controller
 
         $gambar = GambarPaket::where('id_paket', $id)->get();
 
-        return view('admin.produk.tambah-paket', compact('paket', 'produks', 'kategoris', 'gambar', 'detail', 'ket'));
+        return view('admin-template.produk.tambah-paket', compact('paket', 'produks', 'kategoris', 'gambar', 'detail', 'ket'));
     }
 
     public function storePaket(Request $request)
