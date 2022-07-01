@@ -4,22 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Lov's Medical</title>
+        <title>Gatro Dekorasi</title>
 
-        <meta name="description" content="Lov's Medical">
+        <meta name="description" content="Gatro Dekorasi">
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
 
-        <meta property="og:title" content="Lov's Medical">
-        <meta property="og:site_name" content="Lov's Medical">
-        <meta property="og:description" content="Lov's Medical">
+        <meta property="og:title" content="Gatro Dekorasi">
+        <meta property="og:site_name" content="Gatro Dekorasi">
+        <meta property="og:description" content="Gatro Dekorasi">
         <meta property="og:type" content="website">
         <meta property="og:url" content="">
         <meta property="og:image" content="">
 
-        <link rel="shortcut icon" href="{{asset('assets/media/logo.png')}}">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{asset('assets/media/logo.png')}}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/media/logo.png')}}">
+        <link rel="shortcut icon" href="{{asset('img/gatronav1.png')}}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{{asset('img/gatronav1.png')}}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/gatronav1.png')}}">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700">
         <link rel="stylesheet" id="css-main" href="{{asset('assets/css/codebase.min.css')}}">

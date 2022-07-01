@@ -13,12 +13,12 @@ class AdminGaleriController extends Controller
     {
         $photos = Galeri::all();
 
-        return view('admin.galeri.index', compact('photos'));
+        return view('admin-template.galeri.index', compact('photos'));
     }
     
     public function tambah()
     {
-        return view('admin.galeri.tambah');
+        return view('admin-template.galeri.tambah');
     }
     
     public function store(Request $request)

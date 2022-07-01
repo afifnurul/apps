@@ -12,12 +12,12 @@ class AdminKategoriController extends Controller
     {
         $kategoris = Kategori::all();
 
-        return view('admin.kategori.index', compact('kategoris'));
+        return view('admin-template.kategori.index', compact('kategoris'));
     }
 
     public function tambah()
     {
-        return view('admin.kategori.tambah');
+        return view('admin-template.kategori.tambah');
     }
 
     //simpan kategori

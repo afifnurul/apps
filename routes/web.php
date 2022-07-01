@@ -134,6 +134,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         
         //Routes views laporan
         
+
+        //Routes views pengembalian
+        Route::get('/pengembalian', function(){
+
+        })->name('admin.pengembalian');
     });
     
 });

@@ -29,16 +29,16 @@
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-handbag"></i><span class="sidebar-mini-hide">Produk</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="si si-grid"></i><span class="sidebar-mini-hide">Kategori</span></a>
+                        <a href="{{ route('admin.kategori') }}"><i class="si si-grid"></i><span class="sidebar-mini-hide">Kategori</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="si si-basket"></i><span class="sidebar-mini-hide">Pesananan</span></a>
+                        <a href="{{ route('admin.pesanan') }}"><i class="si si-basket"></i><span class="sidebar-mini-hide">Pesananan</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-exchange"></i><span class="sidebar-mini-hide">Pengembalian</span></a>
+                        <a href="{{ route('admin.pengembalian') }}"><i class="fa fa-exchange"></i><span class="sidebar-mini-hide">Pengembalian</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-picture-o"></i><span class="sidebar-mini-hide">Galeri</span></a>
+                        <a href="{{ route('admin.galeri') }}"><i class="fa fa-picture-o"></i><span class="sidebar-mini-hide">Galeri</span></a>
                     </li>
                     <li>
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-note"></i><span class="sidebar-mini-hide">Laporan</span></a>
