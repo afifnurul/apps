@@ -7,14 +7,14 @@
         <div class="sidebar-sticky">
             <ul class="nav flex-column py-5 ml-3">
                 <li class="nav-item">
-                    <a class="nav-link active" style="font-size: 18px;" href="{{ route('admin.home') }}">
+                    <a class="nav-link" style="font-size: 18px; {{ Request::is('admin') ? 'background-color: brown' : '' }}" href="{{ route('admin.home') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
                             <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
                         </svg>                    Dashboard 
                     </a><hr>
                 </li>
                 <li class="nav-item  mb-2">
-                    <a class="nav-link" style="font-size: 18px; {{ Request::is('admin/profile') ? 'background-color: active' : '' }}" href="{{ route('admin.profile') }}">
+                    <a class="nav-link" style="font-size: 18px; {{ Request::is('admin/profile') ? 'background-color: brown' : '' }}" href="{{ route('admin.profile') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>

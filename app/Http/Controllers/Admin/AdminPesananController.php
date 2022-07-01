@@ -15,14 +15,14 @@ class AdminPesananController extends Controller
         
         $pesanan = Pesanan::all();
         
-        return view('admin-template.pesanan.index', compact('pesanan'));
+        return view('admin.pesanan.index', compact('pesanan'));
     }
 
     public function detail($id)
     {
         $pesanan = Pesanan::find($id);
 
-        return view('admin-template.pesanan.detail', compact('pesanan'));
+        return view('admin.pesanan.detail', compact('pesanan'));
     }
 
     public function terima($id)
