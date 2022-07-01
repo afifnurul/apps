@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title>Gatro Dekorasi</title>
 </head>
-<body style="background-image: url(img/loginpage1.png);">
+<body>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #c88a72" >
             <div class="container">           

@@ -11,14 +11,14 @@ class AdminHomeController extends Controller
 {
     public function index()
     {
-        return view('admin.home');
+        return view('admin-template.home');
     }
 
     public function editProfil()
     {
         $profil = User::find(auth()->user()->id);
 
-        return view('admin.profile', compact('profil'));
+        return view('admin-template.profile', compact('profil'));
     }
     
 }

@@ -20,7 +20,8 @@ class AdminKategoriController extends Controller
         return view('admin.kategori.tambah');
     }
 
-    public function store(Request $request)
+    //simpan kategori
+    public function store(Request $request) 
     {
         $request->validate([
             'kategori' => 'required'

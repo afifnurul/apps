@@ -55,7 +55,7 @@
                 </div>
     
                 <div class="mt-4 mr-4">
-                    <a href="https://api.whatsapp.com/send?phone={{ env('no_wa') }}" role="button" class="btn" style="width: 40%; background-color:#c88a72;"><img src="{{ asset('img/chat.png')}}" style="color: white" width="18" height="20" alt=""> Chat</button>
+                    <a href="https://wa.me/{{ env('no_wa') }}" role="button" class="btn" style="width: 40%; background-color:#c88a72;"><img src="{{ asset('img/chat.png')}}" style="color: white" width="18" height="20" alt=""> Chat</button>
                         
                     <a href="{{ route('pesan-sekarang', ['id' => $paket->id]) }}" role="button" id="pesan" class="btn mx-1" style="width: 50%; background-color:#c88a72;">Pesan Sekarang</a>
                 </div>

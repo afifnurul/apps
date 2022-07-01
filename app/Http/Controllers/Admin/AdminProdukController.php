@@ -186,6 +186,7 @@ class AdminProdukController extends Controller
         return redirect()->route('admin.produk');
     }
 
+    //simpan produk
     public function storeProduk(Request $request)
     {
         $request->validate([

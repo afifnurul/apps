@@ -16,7 +16,9 @@
                     <img src="{{asset('img/pw4.2.jpg')}}" width="290" height="230" alt="">
                 </div>
                 </div> --}}
-                
+                <div class="offset-ml-2">
+                    <img src="img/loginpage1.png" width="860px" height="390px" class="card-img" alt="...">
+                </div>    
             </div>
             <div class="col mt-5 w-50">
                 <div class="mt-5 ml-5" style="width: 25rem;">

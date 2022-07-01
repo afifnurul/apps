@@ -5,7 +5,7 @@
 <div class="container">
     <div class="card w-50 mt-4 mx-auto" style="border-color: #c88a72">
         <div class="card-body">
-            <img src="{{ asset('img/gatronav1.png') }}" width="35px" height="35px" alt=""> | Pembayaran
+            <a href="{{ route('home')}}"><img src="{{ asset('img/gatronav1.png') }}" width="35px" height="35px" alt=""></a> | Pembayaran
         </div>
     </div>
     <div class="card w-50 mt-3 mx-auto" style="border-color: #c88a72">
