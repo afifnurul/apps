@@ -22,12 +22,11 @@
               <thead>
                 <tr>
                   <th scope="col">No</th>
-                  <th scope="col">Id Customer</th>
+                  <th scope="col">Nama Customer</th>
                   <th scope="col">Kode Transaksi</th>
                   <th scope="col">Tanggal Acara</th>
                   <th scope="col">Lokasi Acara</th>
                   <th scope="col">Status</th>
-                  <th scope="col">Aksi</th>
                 </tr>
               </thead>
               <tbody>
