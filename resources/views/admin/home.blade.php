@@ -120,28 +120,6 @@
                 </div>    
             </div>
         </div>
-        <div class="column mx-2">
-            <div class="card border-danger text-dark mb-3" style="width: 18rem;">
-                <div class="card-body">
-                    <div class="d-flex">
-                        <div class="w-100">
-                            <h5 class="card-title">INBOX</h5>
-                            <h3 class="card-text">23</h3>
-                            <a href="">Lihat Detail <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-end w-100 pr-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" style="opacity: 20%" fill="currentColor" class="bi bi-envelope-paper" viewBox="0 0 16 16">
-                                <path d="M4 0a2 2 0 0 0-2 2v1.133l-.941.502A2 2 0 0 0 0 5.4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5.4a2 2 0 0 0-1.059-1.765L14 3.133V2a2 2 0 0 0-2-2H4Zm10 4.267.47.25A1 1 0 0 1 15 5.4v.817l-1 .6v-2.55Zm-1 3.15-3.75 2.25L8 8.917l-1.25.75L3 7.417V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v5.417Zm-11-.6-1-.6V5.4a1 1 0 0 1 .53-.882L2 4.267v2.55Zm13 .566v5.734l-4.778-2.867L15 7.383Zm-.035 6.88A1 1 0 0 1 14 15H2a1 1 0 0 1-.965-.738L8 10.083l6.965 4.18ZM1 13.116V7.383l4.778 2.867L1 13.117Z"/>
-                              </svg>
-                        </div>
-                    </div>
-                </div>    
-            </div>
-        </div>
     </div>
 
     <div class="row"></div>

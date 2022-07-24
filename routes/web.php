@@ -46,6 +46,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function(){
     Route::prefix('profil')->group(function(){
         Route::get('/', [ProfilUserController::class, 'index'])->name('user.profil');
+        Route::post('/simpan', [ProfilUserController::class, 'simpan'])->name('user.profil.simpan');
     });
     Route::prefix('pesanan')->group(function(){
         Route::get('/', [PesanController::class, 'index'])->name('user.pesanan');
@@ -148,4 +149,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::get('pengembalian', [AdminLaporanController::class, 'pengembalian'])->name('admin.laporan.pengembalian');
         Route::get('cetak-pengembalian', [AdminLaporanController::class, 'cetakPengembalian'])->name('admin.laporan.pengembalian.cetak');
     });
+
+    Route::post('/filter-sewa', [AdminLaporanController::class, 'filterSewa'])->name('filter.sewa');
+    Route::post('/filter-kembali', [AdminLaporanController::class, 'filterKembali'])->name('filter.kembali');
 });
