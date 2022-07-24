@@ -214,55 +214,29 @@
         <div class="mt-5"></div>
 
         {{-- slideshow --}}
-        <div class="col-md-10 mx-auto">
-            <div class="main-carousel">
-                <!-- Slider main container -->
-                <div class="swiper w-100">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                        <!-- Slides -->
-                        {{-- Ambil gambar di folder public/galeri --> HomeController --}}
-                        @foreach ($carousels as $carousel)  
-                            <div class="carousel-cell swiper-slide">
-                                <img src="{{asset('public/galeri/'.$carousel->gambar.'')}}"  width="270px" height="280px" alt="">
-                        
-                            </div>                            
-                        @endforeach
+        <section id="galeri">
+            <div class="col-md-10 mx-auto">
+                <div class="main-carousel">
+                    <!-- Slider main container -->
+                    <div class="swiper w-100">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            {{-- Ambil gambar di folder public/galeri --> HomeController --}}
+                            @foreach ($carousels as $carousel)  
+                                <div class="carousel-cell swiper-slide">
+                                    <img src="{{asset('public/galeri/'.$carousel->gambar.'')}}"  width="270px" height="280px" alt="">
+                            
+                                </div>                            
+                            @endforeach
+                        </div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>          
-        </div>
+                </div>          
+            </div>
+        </section>
 
         <div class="mt-4"></div> 
-
-        <!-- Gallery -->
-        {{-- <section id="gallery">
-            <div class="mt-5 d-flex justify-content-center">
-            <h4>Gallery</h4>
-            </div>
-                
-            <div class="container">
-            <div class="row-cust">
-                <div class="column-cust">
-                    <img src="img/pw2.2.jpg" alt="">
-                    <div class="mt-1"></div>
-                    <img src="img/pw1.1.jpg" alt="">
-                </div>
-                <div class="column-cust">
-                    <img src="img/pw1.2.jpg" alt="">
-                    <div class="mt-1"></div>
-                    <img src="img/pw3.2.jpg" alt="">
-                </div>
-                <div class="column-cust">
-                    <img src="img/pw3.1.jpg" alt="">
-                    <div class="mt-1"></div>
-                    <img src="img/pw4.1.jpg" alt="">
-                </div>
-            </div>       
-            </div>
-    
-        </section> --}}
 
         {{-- contact --}}
         <section id="contact">
