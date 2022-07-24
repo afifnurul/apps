@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\AdminGaleriController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminKategoriController;
+use App\Http\Controllers\Admin\AdminLaporanController;
+use App\Http\Controllers\Admin\AdminPengembalianController;
 use App\Http\Controllers\Admin\AdminPesananController;
 use App\Http\Controllers\Admin\AdminProdukController;
 use App\Http\Controllers\HomeController;
@@ -64,7 +66,6 @@ Route::group(['middleware' => ['auth']], function(){
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(){
     Route::get('/', [AdminHomeController::class, 'index'])
         ->name('admin.home');
-    Route::get('/profile', [AdminHomeController::class, 'editProfil'])->name('admin.profile');
     Route::prefix('pesanan')->group(function(){
         Route::get('/', [AdminPesananController::class, 'index'])->name('admin.pesanan');
         Route::get('/respons/{id}', [AdminPesananController::class, 'detail'])->name('admin.pesanan.respons');
@@ -130,15 +131,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
             ->name('admin.produk.updatePaket');
         Route::get('/hapus/paket/{id}', [AdminProdukController::class, 'deletePaket'])
             ->name('admin.paket.hapus');
-
+            
+    });
         
-        //Routes views laporan
-        
-
-        //Routes views pengembalian
-        Route::get('/pengembalian', function(){
-
-        })->name('admin.pengembalian');
+    //Routes views pengembalian
+    Route::group(['prefix' => 'pengembalian'], function(){
+        Route::get('/', [AdminPengembalianController::class, 'index'])->name('admin.pengembalian');
+        Route::get('/form-pengembalian/{id}', [AdminPengembalianController::class, 'pengembalian'])->name('admin.pengembalian.form');
+        Route::post('/simpan', [AdminPengembalianController::class, 'simpanPengembalian'])->name('admin.pengembalian.form.simpan');
     });
     
+    //Routes views laporan
+    Route::group(['prefix' => 'laporan'], function(){
+        Route::get('penyewaan', [AdminLaporanController::class, 'penyewaan'])->name('admin.laporan.penyewaan');
+        Route::get('cetak-penyewaan', [AdminLaporanController::class, 'cetakPenyewaan'])->name('admin.laporan.penyewaan.cetak');
+        Route::get('pengembalian', [AdminLaporanController::class, 'pengembalian'])->name('admin.laporan.pengembalian');
+        Route::get('cetak-pengembalian', [AdminLaporanController::class, 'cetakPengembalian'])->name('admin.laporan.pengembalian.cetak');
+    });
 });

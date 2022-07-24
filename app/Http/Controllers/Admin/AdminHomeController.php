@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use App\Models\Paket;
+use App\Models\Pengembalian;
 use App\Models\Pesanan;
 use App\Models\Produk;
 use App\Models\User;
@@ -23,14 +24,9 @@ class AdminHomeController extends Controller
 
         $penyewaan = count(Pesanan::where('status', 'DP Masuk')->get());
 
-        return view('admin.home', compact('kategori', 'produk', 'paket', 'penyewaan'));
-    }
+        $pengembalian = count(Pengembalian::all());
 
-    public function editProfil()
-    {
-        $profil = User::find(auth()->user()->id);
-
-        return view('admin.profile', compact('profil'));
+        return view('admin.home', compact('kategori', 'produk', 'paket', 'penyewaan', 'pengembalian'));
     }
     
 }

@@ -14,7 +14,7 @@
 
     <nav class="col-md-2 d-none d-md-block sidebar" style="background-color: #c88a72; height: 100vh; position: fixed">
         <div class="sidebar-sticky">
-            <ul class="nav flex-column py-5 ml-3">
+            <ul class="nav flex-column py-2 ml-3">
                 <div class="sidebar-mini-hidden-b text-center mb-2">
                     <a class="img-link">
                         <img class="img-avatar" style="width: 100px; height:100px" src="{{ asset('img/gatronav1.png') }}" alt="">
@@ -30,14 +30,6 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
                             <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
                         </svg>                    Dashboard 
-                    </a>
-                </li>
-                <li class="nav-item  mb-2">
-                    <a class="nav-link" style="font-size: 18px; {{ Request::is('admin/profile') ? 'background-color: brown' : '' }}" href="{{ route('admin.profile') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                        </svg>                Profile 
                     </a>
                 </li>
                 <li class="nav-item  mb-2">
@@ -70,6 +62,14 @@
                         </svg>                Galeri
                     </a>
                 </li>
+                <li class="nav-item  mb-2">
+                    <a class="nav-link" style="font-size: 18px; {{ Request::is('admin/pengembalian') ? 'background-color: brown' : '' }}" href="{{ route('admin.pengembalian') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                            <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+                            <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+                        </svg>                Pengembalian
+                    </a>
+                </li>
                 <li class="nav-item mb-2">
                     <a class="nav-link collapsed" style="font-size: 18px;" href="#submenu1" data-toggle="collapse" data-target="#submenu1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
@@ -80,8 +80,8 @@
                     </a>
                     <div class="collapse" id="submenu1" aria-expanded="false">
                         <ul class="flex-column pl-2 nav">
-                            <li class="nav-item"><a class="nav-link py-0" href="#"><span>Penyewaan</span></a></li>
-                            <li class="nav-item"><a class="nav-link py-0" href="#"><span>Pengembalian</span></a></li>
+                            <li class="nav-item"><a class="nav-link py-0" href="{{ route('admin.laporan.penyewaan') }}"><span>Penyewaan</span></a></li>
+                            <li class="nav-item"><a class="nav-link py-0" href="{{ route('admin.laporan.pengembalian') }}"><span>Pengembalian</span></a></li>
                         </ul>
                     </div>
                 </li>
