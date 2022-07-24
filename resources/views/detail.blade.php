@@ -44,7 +44,7 @@
                             @endphp
                             Rp. {{ $harga }}</b></h4>
                       </div>
-                      @if ($paket->jumlah_tamu != 0)
+                      @if ($paket->jml_tamu != null)
                       <hr width="100px" class="col-md-5 offset-md-3">
                       <div class="mx-3 d-flex justify-content-between">
                         <p>Jumlah Tamu </p>

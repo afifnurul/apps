@@ -5,7 +5,7 @@
 {{-- template bagian kanan halaman --}}
 <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <h3 class="mt-3">Tambahkan Gambar</h3>
-    <label for="gambar" class="h-75 w-75 mb-3">
+    <label for="gambar" class="w-75 mb-3" style="height: 75vh">
         <div class="w-100 h-100 border rounded mt-3 d-flex justify-content-center align-items-center" style="cursor: pointer" id="gambar-preview">
             <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" fill="currentColor" class="bi bi-cloud-arrow-up" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M7.646 5.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2z"/>
