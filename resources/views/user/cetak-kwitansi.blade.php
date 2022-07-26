@@ -12,6 +12,7 @@
         </a>
     </div>
     <div class="card w-50 mx-auto" id="card" style="border-color: #c88a72">
+        
         <div class="card-body">
             <div class="row">
                 <div class="col-sm mr-auto">
@@ -22,7 +23,9 @@
                  </div>
                  
             </div>
-            <hr>
+            <div class="d-flex justify-content-center my-3">
+                <h4>Kwitansi Pembayaran</h4>
+            </div>
             <div class="mt-4 pt-2">
                 
                 <table class="table table-bordered">
@@ -38,7 +41,7 @@
                       <tr>
                         <th scope="row">1</th>
                         <td>nama paket</td>
-                        <td>Bank {{ strtoupper($transaksi->metode) }}</td>
+                        <td>Bank </td>
                         <td>Rp. 14.000.000</td>
                       </tr>
                       <tr>
@@ -61,12 +64,6 @@
                       </tr>
                     </tbody>
                   </table>
-                <p>
-                   Silahkan transfer ke rekening : {{ $transaksi->rekening }}
-                </p>
-                <div>
-                    <h5>Harap selesaikan pembayaran sebelum <span class="text-danger"> <br> {{ $transaksi->expired }}</span></h5>
-                </div>
             </div>
         </div>
     </div>

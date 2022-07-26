@@ -11,7 +11,7 @@ class PesanController extends Controller
 {
     public function index()
     {
-        TransaksiController::statusTransaksi();
+        // TransaksiController::statusTransaksi();
 
         $invoice = TransaksiController::jmlTagihan();
 

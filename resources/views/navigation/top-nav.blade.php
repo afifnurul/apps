@@ -139,11 +139,12 @@
                     <a class="nav-link" href="#about">About</a>
                 </li>
                 <li class="nav-item mx-5">
-                    <a class="nav-link" href="#contact">Contact</a>
-                </li>
-                <li class="nav-item mx-5">
                     <a class="nav-link" href="#gallery">Gallery</a>
                 </li>
+                <li class="nav-item mx-5">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                
                 <!-- Authentication Links -->
             </ul>
             <ul class="navbar-nav col-md-1">
@@ -162,7 +163,7 @@
                 @else
                     <li class="nav-item dropdown ms-auto">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ asset('img/profile.png') }}" width="30" height="30" alt=""> {{ Auth::user()->name }}
+                            {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a href="{{ route('user.profil', ['id' => Auth::user()->id]) }}" class="dropdown-item">Profile</a>

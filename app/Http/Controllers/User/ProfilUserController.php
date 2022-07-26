@@ -11,7 +11,7 @@ class ProfilUserController extends Controller
 {
     public function index()
     {
-        TransaksiController::statusTransaksi();
+        // TransaksiController::statusTransaksi();
 
         $profil = User::find(auth()->user()->id);
 

@@ -6,6 +6,18 @@
     @include('navigation.sidebar-user')
 
     <div id="content" class="p-4 p-md-5">
+      <div class="mt-1">
+        <h3>Tagihan</h3>
+        <div class="mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Tagihan</li>
+                </ol>
+            </nav>
+        </div>
+      </div>
+
         @if (Session::has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <h4 class="alert-heading">Sabar ya</h4>

@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="d-flex justify-content-center my-3">
-        <h2>Laporan Penyewaan</h2>
+        <h2>Laporan Data Penyewaan</h2>
     </div>
     <table class="table">
         <thead>

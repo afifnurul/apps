@@ -3,9 +3,23 @@
 @section('content')
 
 <div class="w-100 row">
+
     @include('navigation.sidebar-user')
 
     <div id="content" class="p-4 p-md-5">
+
+        <div class="mt-1">
+            <h3>Pesanan</h3>
+            <div class="mt-4">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Pesanan</li>
+                    </ol>
+                </nav>
+            </div>
+          </div>
+
         @if (Session::has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <h4 class="alert-heading">Sabar ya</h4>
@@ -25,6 +39,9 @@
                 <td scope="col">Tanggal Pengembalian</td>
                 <td scope="col">Catatan</td>
                 <td scope="col">Status</td>
+                @if (isset($pesanan[0]->status))
+                <td scope="col">Pesanan</td>
+                @endif
               </tr>
             </thead>
             
@@ -50,6 +67,8 @@
                                     <td>
                                         <a href="{{ route('pilih.pembayaran', ['id' => $data->id]) }}" role="button" class="btn btn-primary">Pilih Pembayaran</a>
                                     </td>
+                                @else
+                                <td></td>
                                 @endif
                             </tr>
                         <?php $no++; ?>

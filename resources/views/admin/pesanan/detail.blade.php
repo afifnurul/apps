@@ -22,7 +22,7 @@
         <div>Nama Paket : {{ $pesanan->paketnya->nama}}</div>
         <div>Kategori: {{ $pesanan->paketnya->kategorinya->nama }}</div>
         <div>Harga: Rp {{ number_format($pesanan->paketnya->harga, 0, '', '.') }}</div>
-        <div>Lokasi Acara: {{ $pesanan->lokasi_acara }}</div>
+        <div>Lokasi Acara: {{ $pesanan->lokasi }}</div>
         <div>Alamat Lokasi: {{ $pesanan->alamat_acara }}</div>
         <div>Tanggal Acara: {{ App\Http\Controllers\User\PesanController::tglID($pesanan->tgl_acara) }}</div>
         <div>Tanggal Pengembalian: {{ App\Http\Controllers\User\PesanController::tglID($pesanan->tgl_kembali) }}</div>

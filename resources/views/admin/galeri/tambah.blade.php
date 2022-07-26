@@ -22,16 +22,19 @@
 </div>
 
 <script>
-    let dropArea = document.querySelector('#gambar');
+    //variable ambil dari id gambar = inputan
+    let dropArea = document.querySelector('#gambar'); 
+    //variable dari gmbar preview = label 
     let preview  = document.querySelector('#gambar-preview');
+    //inputan.
     dropArea.addEventListener('change', function(e){
         e.preventDefault();
-        preview.innerHTML = '';
-        let file = e.target.files[0];
-        let url = URL.createObjectURL(file);
-        let img = document.createElement('img');
-        img.src = url;
-        preview.appendChild(img);
+        preview.innerHTML = ''; // dibersihkan isi element nya 
+        let file = e.target.files[0]; //ambil file
+        let url = URL.createObjectURL(file); //membuat url sementara
+        let img = document.createElement('img'); //sama dengan tag img baru
+        img.src = url; //membuat src img
+        preview.appendChild(img); //memasang anak child 
     })
 </script>
 

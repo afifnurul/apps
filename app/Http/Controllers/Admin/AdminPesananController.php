@@ -11,7 +11,7 @@ class AdminPesananController extends Controller
 {
     public function index()
     {
-        TransaksiController::statusTransaksi();
+        // TransaksiController::statusTransaksi();
         
         $pesanan = Pesanan::all();
         

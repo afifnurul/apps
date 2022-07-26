@@ -25,7 +25,7 @@
                 <div class="mr-auto p-2"></div>
                 <div class="p-2 "></div>
                 <div class="pr-5 mr-5" style="color: rgb(175, 174, 174)">Jumlah</div>
-                <div class="p-2" style="color: rgb(175, 174, 174)">Total</div>
+                <div class="px-2 pb-2" style="color: rgb(175, 174, 174)">Total</div>
             </div>
             <div class="d-flex">
                 <div class="mr-auto p-2">{{ $pesanan->paketnya->nama }}</div>
@@ -34,11 +34,34 @@
                 <div class="p-2">Rp{{ number_format($pesanan->paketnya->harga, 0, '', '.') }}</div>
             </div>
             <div class="mr-auto p-2" style="color: rgb(139, 139, 139)">Catatan</div>
+            <p class="p-2">{{ $pesanan->catatan }}</p>
         </div>
     </div>
     <div class="card w-50 mt-4 mx-auto" style="border-color: #c88a72">
         <div class="card-body">
             <div>
+                <div>
+                    Pembayaran
+                </div>
+                <div class="d-flex">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="bayar" id="dp" value="dp">
+                        <label class="form-check-label" for="dp">
+                          DP
+                        </label>
+                    </div>
+                    <div class="form-check mx-3">
+                        <input class="form-check-input" type="radio" name="bayar" id="lunas" value="lunas">
+                        <label class="form-check-label" for="lunas">
+                          Lunas
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <input type="number" name="nominal" class="form-control col-4 d-none">
+                </div>
+            </div>
+            <div class="mt-2">
                 <div class="mr-auto">Metode Pembayaran</div>
                 <div class="mt-2 d-flex">
                     <div class="form-check">
@@ -86,6 +109,18 @@
     bank.on('change', function(){
         var val = $('input[name=bank]:checked').val();
         document.querySelector('#metode').value = val;
+    })
+</script>
+
+<script>
+    var bayar = $('input[name=bayar]');
+    bayar.on('change', function(){
+        var val = $('input[name=bayar]:checked').val();
+        if(val == 'dp'){
+            $('input[name=nominal]').removeClass('d-none');
+        } else {
+            $('input[name=nominal]').addClass('d-none');
+        }
     })
 </script>
 

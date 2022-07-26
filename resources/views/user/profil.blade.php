@@ -7,7 +7,19 @@
     <div class="col-md-9 ml-sm-auto col-lg-10 pt-3 pr-5">
         <div class="pr-5 ww-100">
             <div class="container pr-5 w-100">
-              <h3 class="mb-3">Profil</h3>
+              <div class="mt-4">
+                <h3>Profil</h3>
+                <div class="mt-4">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">Profil</li>
+                        </ol>
+                    </nav>
+                </div>
+              </div>
+
+
               <form action="{{ route('user.profil.simpan') }}" method="POST">
                 @csrf
                 <div class="form-row">
@@ -44,37 +56,6 @@
                 </div>
                 <button class="btn btn-primary" type="submit">Simpan</button>
               </form>
-                {{-- <form class="w-100">
-                  <h5 class="mb-3">Profil</h5>
-                    <div class="form-row">
-                      <div class="form-group w-100">
-                        <label for="nama">Nama</label>
-                        <input type="text" value="{{ $profil->name }}" class="form-control" id="nama">
-                      </div>
-                      <div class="form-group w-100">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" value="{{ $profil->email }}" class="form-control" id="inputEmail4">
-                      </div>
-                      <div class="form-group w-100">
-                        <label for="inputAddress">Alamat</label>
-                        <input type="text" value="{{ $profil->alamat }}" class="form-control" id="inputAddress" placeholder="">
-                      </div>
-                      <div class="form-group w-100">
-                        <label for="inputAddress2">Kota</label>
-                        <input type="text" value="{{ $profil->kota }}" class="form-control" id="inputAddress2" placeholder="">
-                      </div>
-                      <div class="form-group w-100">
-                        <label for="inputCity">No HP 1</label>
-                        <input type="text" value="{{ $profil->no_hp1 }}" class="form-control" id="inputCity">
-                      </div>
-                      <div class="form-group w-100">
-                        <label for="inputZip">No HP 2</label>
-                        <input type="text" value="{{ $profil->no_hp2 }}" class="form-control" id="inputZip">
-                      </div>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                  </form> --}}
             </div>
         </div>
     </div>

@@ -33,6 +33,10 @@ Route::get('/home', function(){
     return view('home');
 });
 
+Route::get('/cetak-kwitansi', function(){
+    return view('user.cetak-kwitansi');
+});
+
 Route::get('/pembayaran', function(){
     return view('user.pembayaran');
 });

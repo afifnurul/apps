@@ -5,11 +5,20 @@
 {{-- template bagian kanan halaman --}}
 <div class="col-md-3 ml-sm-auto col-lg-10 pt-2 px-4">
     <div class="mt-4 p-3">
-        <h3>Dashboard</h3>
+        <div class="mt-4">
+            <h3>Dashboard</h3>
+            <div class="mt-4">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">SELAMAT DATANG ADMIN :)</li>
+                  </ol>
+              </nav>
+            </div>
+          </div>
     </div>
     {{-- bagian isi menu --}}
     <div class="row mt-3 ml-3">
-        <div class="column mx-2">
+        <div class="col-3 mx-2">
             <div class="card border-success text-dark text-justify mb-3" style="width: 18rem; ">
                 <div class="card-body">
                     <div class="d-flex">
@@ -31,7 +40,7 @@
                 </div>                
             </div>
         </div>
-        <div class="column mx-2">
+        <div class="col-3 mx-2">
             <div class="card border-primary text-dark text-justify mb-3" style="width: 18rem; ">
                 <div class="card-body">
                     <div class="d-flex">
@@ -53,7 +62,7 @@
                 </div>                
             </div>
         </div>
-        <div class="column mx-2">
+        <div class="col-3 mx-2">
             <div class="card border-warning text-dark text-justify mb-3" style="width: 18rem; ">
                 <div class="card-body">
                     <div class="d-flex">
@@ -74,8 +83,8 @@
                     </div>                   
                 </div>                
             </div>
-        </div>
-        <div class="column mx-2">
+        </div> 
+        <div class="col-3 mx-2">
             <div class="card border-info text-dark mb-3" style="width: 18rem;">
                 <div class="card-body">
                     <div class="d-flex">
@@ -98,7 +107,7 @@
                 </div>
             </div>
         </div>
-        <div class="column mx-2">
+        <div class="col-3 mx-2">
             <div class="card border-dark text-dark mb-3" style="width: 18rem;">
                 <div class="card-body">
                     <div class="d-flex">

@@ -14,7 +14,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        TransaksiController::statusTransaksi();
+        // TransaksiController::statusTransaksi();
 
         $carousels = Galeri::all();
 

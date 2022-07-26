@@ -5,21 +5,22 @@
 <div class="py-5 mt-1">
     <div class="ml-5">
         <div class="row w-100">
-            <div class="col-6">
+            <div class="col mt-5 w-50">
                 {{-- <img src="img/loginpage.png" width="900px" height="390px" class="card-img" alt="..."> --}}
-                {{-- <div class="d-flex justify-content-center ml-3 mt-5 animate__animated animate__fadeInDown">
-                    <img src="{{asset('img/c3.jpg')}}" width="240" height="280" alt="">
+                {{-- <div class="d-flex justify-content-center ml-3 mt-2 animate__animated animate__fadeInDown">
+                    <img src="{{asset('img/c3.jpg')}}" width="200" height="240" alt="">
                 </div>
                 <div class="d-flex justify-content-start mt-5 ml-auto animate__animated animate__fadeInLeft">
-                    <img src="{{asset('img/c3.jpg')}}" width="240" height="280" alt="">
+                    <img src="{{asset('img/c3.jpg')}}" width="200" height="240" alt="">
                     <div class="d-flex justify-content-center ml-5 animate__animated animate__fadeInUp">
-                    <img src="{{asset('img/pw4.2.jpg')}}" width="290" height="230" alt="">
+                    <img src="{{asset('img/pw4.2.jpg')}}" width="250" height="200" alt="">
                 </div>
                 </div> --}}
-                <div class="offset-ml-2">
-                    <img src="img/loginpage1.png" width="860px" height="390px" class="card-img" alt="...">
+                <div class="offset-ml-2 mt-5">
+                    <img src="{{ asset('img/vektor-about.png') }}" width="320px" height="320px" class="card-img" alt="...">
                 </div>    
             </div>
+
             <div class="col mt-5 w-50">
                 <div class="mt-5 ml-5" style="width: 25rem;">
                     <div class="px-3">
