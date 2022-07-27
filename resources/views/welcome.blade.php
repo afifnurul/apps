@@ -166,9 +166,9 @@
                 <div class="col-md-5 float-center p-2">
                     <img src="{{ asset('img/about-us.png')}}" width="510" height="370" alt="">
                 </div>
-                <div class="col mt-5 offset-md-1">
+                <div class="col p-4 mt-5 ml-4 mr-5 offset-mr-1">
                     <h4 class="text-center" style="color: #ab7661; font-family: 'Times New Roman', Times, serif">About Us</h4>
-                    <p class="text-justify" style="font-family: 'Times New Roman', Times, serif; font-size:14pt;">Gatro dekorasi adalah sebuah jasa penyewaan dekorasi pernikahan yang berada di Desa Geritan, Kota Pati, Kabuapaten Pati, Jawa Tengah. Gatro dekorasi tidak hanya menyewakan dekorasi tetapi juga menyewakan sound system dan perlengkapan pernikahan lainnya. Terdapat banyak pilihan paket dekorasi yang dapat dipilih sesuai keinginan calon pengantin. Pemesan juga bisa menyewa beberapa item diluar paket. Untuk acara lain seperti tunangan, acara tujuh bulanan dan lain sebagainya juga dapat menggunakan Gatro dekorasi sebagai jasa penyewaannya. </p>
+                    <p class="text-justify ml-4" style="font-family: 'Times New Roman', Times, serif; font-size:14pt;">Gatro dekorasi adalah sebuah jasa penyewaan dekorasi pernikahan yang berada di Desa Geritan, Kota Pati, Kabuapaten Pati, Jawa Tengah. Gatro dekorasi tidak hanya menyewakan dekorasi tetapi juga menyewakan sound system dan perlengkapan pernikahan lainnya. Terdapat banyak pilihan paket dekorasi yang dapat dipilih sesuai keinginan anda. </p>
                 
                 </div>
             </div>
