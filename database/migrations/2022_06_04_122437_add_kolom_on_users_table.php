@@ -14,8 +14,8 @@ class AddKolomOnUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table){
-            $table->string('no_hp1')->nullable();
-            $table->string('no_hp2')->nullable();
+            $table->string('no_hp1')->nullable()->after('alamat');
+            $table->string('no_hp2')->nullable()->after('no_hp1');
         });
     }
     

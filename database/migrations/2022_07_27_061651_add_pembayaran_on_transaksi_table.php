@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNamaOnPesananTable extends Migration
+class AddPembayaranOnTransaksiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddNamaOnPesananTable extends Migration
      */
     public function up()
     {
-        Schema::table('pesanan', function (Blueprint $table) {
-            $table->string('nama')->after('id_paket');
+        Schema::table('transaksi', function (Blueprint $table) {
+            $table->string('pembayaran')->after('id_pesanan');
         });
     }
 
@@ -25,8 +25,8 @@ class AddNamaOnPesananTable extends Migration
      */
     public function down()
     {
-        Schema::table('pesanan', function (Blueprint $table) {
-            $table->dropColumn('nama');
+        Schema::table('transaksi', function (Blueprint $table) {
+            $table->dropColumn('pembayaran');
         });
     }
 }

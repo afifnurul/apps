@@ -14,7 +14,7 @@ class AddKolomGambarOnPaketTable extends Migration
     public function up()
     {
         Schema::table('paket', function (Blueprint $table){
-            $table->integer('jml_tamu')->nullable();
+            $table->integer('jml_tamu')->nullable()->after('isi_paket');
         });
     }
 

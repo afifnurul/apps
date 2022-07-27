@@ -14,7 +14,7 @@ class AddAlamatAcaraOnPesananTable extends Migration
     public function up()
     {
         Schema::table('pesanan', function(Blueprint $table){
-            $table->text('alamat_acara');
+            $table->text('alamat_acara')->after('lokasi');
         });
     }
 
