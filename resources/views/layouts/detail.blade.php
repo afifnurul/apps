@@ -54,7 +54,7 @@
     
     <title>Gatro Dekorasi</title>
 </head>
-<body>
+<body style="background-color: #f1f0f0fd">
 
     {{-- ig wa nav --}}
     <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #c88a72">

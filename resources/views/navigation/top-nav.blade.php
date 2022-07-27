@@ -139,7 +139,7 @@
                     <a class="nav-link" href="#about">About</a>
                 </li>
                 <li class="nav-item mx-5">
-                    <a class="nav-link" href="#gallery">Gallery</a>
+                    <a class="nav-link" href="#galeri">Gallery</a>
                 </li>
                 <li class="nav-item mx-5">
                     <a class="nav-link" href="#contact">Contact</a>
