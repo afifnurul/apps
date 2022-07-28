@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Models\Pesanan;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MidtransNotificationController extends Controller
 {
@@ -19,6 +20,9 @@ class MidtransNotificationController extends Controller
 
         $transaksi = Transaksi::find($json->order_id);
         $transaksi->status = $json->transaction_status;
+        $pesanan = Pesanan::find($transaksi->id_pesanan);
+        $pesanan->status = 'DP Masuk';
+        $pesanan->save();
         return $transaksi->save();
 
     }
