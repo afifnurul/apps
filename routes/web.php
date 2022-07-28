@@ -155,6 +155,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::get('cetak-pengembalian', [AdminLaporanController::class, 'cetakPengembalian'])->name('admin.laporan.pengembalian.cetak');
     });
 
+    Route::post('/filter-pesanan', [AdminPesananController::class, 'filterPesanan'])->name('filter.pesanan');
     Route::post('/filter-sewa', [AdminLaporanController::class, 'filterSewa'])->name('filter.sewa');
     Route::post('/filter-kembali', [AdminLaporanController::class, 'filterKembali'])->name('filter.kembali');
 });

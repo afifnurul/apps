@@ -18,6 +18,17 @@
         </div>
       </div>
       <div class="mt-3">
+        <div class="d-flex col-11 align-items-center mb-2">
+          <span>Filter: </span>
+          <select name="tgl" id="tgl" class="form-control col-2 ml-3">
+            <option value="0">-Pilih-</option>
+            <option value="tgl_acara">Tanggal Acara</option>
+            <option value="tgl_kembali">Tanggal Pengembalian</option>
+          </select>
+          <input type="date" name="tgl_awal" class="form-control col-2 ml-3">
+          <span class="ml-3">s.d</span>
+          <input type="date" name="tgl_akhir" class="form-control col-2 ml-3" onchange="filter()">
+        </div>
           <table class="table">
               <thead>
                 <tr>
@@ -31,7 +42,7 @@
                   <td scope="col">Aksi</td>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="tbody">
                 @php
                     $no = 1;
                 @endphp
@@ -57,11 +68,11 @@
                       <span class="badge badge-success">{{ $data->status }}</span>
                       @endif
                     </td>
+                    <td>
                     @if ($data->status == 'menunggu')
-                        <td>
-                            <a href="{{ route('admin.pesanan.respons' , ['id' => $data->id]) }}" class="btn btn-primary">Respons</a>
-                        </td>
+                      <a href="{{ route('admin.pesanan.respons' , ['id' => $data->id]) }}" class="btn btn-primary">Respons</a>
                     @endif
+                    </td>
                 </tr>
                 <?php $no++; ?>
                 @endforeach
@@ -76,5 +87,29 @@
     {!! $pesanan->links() !!}
   </div>
 </div>
+
+<script>
+  var tgl = document.querySelector('select[name=tgl]');
+  var awal = document.querySelector('input[type=date][name=tgl_awal]');
+  var akhir = document.querySelector('input[type=date][name=tgl_akhir]');
+  function filter(){
+    if(tgl.value != 0 && awal.value != null){
+      $.ajax({
+        url: "{{ route('filter.pesanan') }}",
+        type: "post",
+        data: {
+          _token: "{{ csrf_token() }}",
+          tgl: tgl.value,
+          awal: awal.value,
+          akhir: akhir.value
+        },
+        success: function(data){
+          document.querySelector('#tbody').innerHTML = data;
+          // console.log(data)
+        }
+      });
+    }
+  }
+</script>
 
 @endsection
