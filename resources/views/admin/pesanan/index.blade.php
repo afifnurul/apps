@@ -72,7 +72,9 @@
       </div>
     </div>
   </div>
-  {{ $pesanan->links() }}
+  <div class="d-flex justify-content-end px-5 mx-5">
+    {!! $pesanan->links() !!}
+  </div>
 </div>
 
 @endsection
