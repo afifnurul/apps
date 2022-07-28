@@ -42,80 +42,69 @@
             <p class="p-2">{{ $pesanan->catatan }}</p>
         </div>
     </div>
-    <div class="card w-50 mt-4 mx-auto" >
-        <div class="card-body">
-            <div>
-                <div>
-                    Pembayaran
-                </div>
-                <div class="d-flex">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="bayar" id="dp" value="dp">
-                        <label class="form-check-label" for="dp">
-                          DP
-                        </label>
-                    </div>
-                    <div class="form-check mx-3">
-                        <input class="form-check-input" type="radio" name="bayar" id="lunas" value="lunas">
-                        <label class="form-check-label" for="lunas">
-                          Lunas
-                        </label>
-                    </div>
-                </div>
-                <div>
-                    <input type="number" name="nominal" class="form-control col-4 d-none">
-                </div>
-            </div>
-            <div class="mt-2">
-                <div class="mr-auto">Metode Pembayaran</div>
-                <div class="mt-2 d-flex">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="bank" id="bni" value="bni">
-                        <label class="form-check-label" for="bni">
-                          BNI
-                        </label>
-                    </div>
-                    <div class="form-check mx-3">
-                        <input class="form-check-input" type="radio" name="bank" id="bri" value="bri">
-                        <label class="form-check-label" for="bri">
-                          BRI
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="bank" id="bca" value="bca">
-                        <label class="form-check-label" for="bca">
-                          BCA
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="p-3 ml-auto">
-            Total : Rp{{ number_format($pesanan->paketnya->harga, 0, '', '.') }} <br>
-            DP : Rp1.000.000 <br>
-            @php
-                $sisa = $pesanan->paketnya->harga - 1000000;
-            @endphp
-            Sisa(COD) : Rp{{ number_format($sisa, 0, '', '.') }}
-        </div>
-        <div class="p-3 ml-auto">
-            <form action="{{ route('tagihan') }}" method="post">
-                @csrf
+    <form action="{{ route('tagihan') }}" method="post">
+        @csrf
+        <div class="card w-50 mt-4 mx-auto" >
                 <input type="hidden" name="id_pesanan" value="{{ $pesanan->id }}">
-                <input type="hidden" name="metode" id="metode">
-                <button type="submit" class="btn btn-primary mr-auto">Bayar</button>
-            </form>
+                <div class="card-body">
+                    <div>
+                        <div>
+                            Pembayaran
+                        </div>
+                        <div class="d-flex">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="bayar" id="dp" value="dp">
+                                <label class="form-check-label" for="dp">
+                                DP
+                                </label>
+                            </div>
+                            <div class="form-check mx-3">
+                                <input class="form-check-input" type="radio" name="bayar" id="lunas" value="lunas">
+                                <label class="form-check-label" for="lunas">
+                                Lunas
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="number" name="nominal" value="1000000" min="1000000" max="{{ $pesanan->paketnya->harga }}" step="500000" class="form-control col-4 d-none">
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="mr-auto">Metode Pembayaran</div>
+                        <div class="mt-2 d-flex">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="bank" id="bni" value="bni">
+                                <label class="form-check-label" for="bni">
+                                BNI
+                                </label>
+                            </div>
+                            <div class="form-check mx-3">
+                                <input class="form-check-input" type="radio" name="bank" id="bri" value="bri">
+                                <label class="form-check-label" for="bri">
+                                BRI
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="bank" id="bca" value="bca">
+                                <label class="form-check-label" for="bca">
+                                BCA
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-3 ml-auto">
+                    <div>
+                        Total : Rp{{ number_format($pesanan->paketnya->harga, 0, '', '.') }} <br>
+                    </div>
+                    <div id="nominal-dp" class="d-none">Dp</div>
+                    <div id="sisa-bayar" class="d-none">Sisa</div>
+                </div>
+                <div class="p-3 ml-auto">
+                    <button type="submit" class="btn btn-primary mr-auto">Bayar</button>
+                </div>
         </div>
-    </div>
-
-
-<script>
-    var bank = $('input[name=bank]');
-    bank.on('change', function(){
-        var val = $('input[name=bank]:checked').val();
-        document.querySelector('#metode').value = val;
-    })
-</script>
+    </form>
 
 <script>
     var bayar = $('input[name=bayar]');
@@ -123,10 +112,45 @@
         var val = $('input[name=bayar]:checked').val();
         if(val == 'dp'){
             $('input[name=nominal]').removeClass('d-none');
+            var nomi = $('input[name=nominal]').val();
+            $('#nominal-dp').html('Dp : '+formatRupiah(nomi, "Rp"));
+            var harga = parseInt("{{ $pesanan->paketnya->harga }}");
+            var dp = parseInt(nomi);
+            var sisa = (harga - dp).toString();
+            $('#sisa-bayar').html('Sisa : '+formatRupiah(sisa, "Rp"));
+            $('#sisa-bayar').removeClass('d-none');
+            $('input[name=nominal]').on('change', function(){
+                var nominal = $('input[name=nominal]').val();
+                $('#nominal-dp').html('Dp : '+formatRupiah(nominal, "Rp"));
+                var dp = parseInt(nominal);
+                var sisa = (harga - dp).toString();
+                $('#sisa-bayar').html('Sisa : '+formatRupiah(sisa, "Rp"));
+                $('#sisa-bayar').removeClass('d-none');
+            })
+            $('#nominal-dp').removeClass('d-none');
         } else {
             $('input[name=nominal]').addClass('d-none');
+            $('#nominal-dp').addClass('d-none');
         }
     })
+
+    /* Fungsi formatRupiah */
+    function formatRupiah(angka, prefix){
+        var number_string = angka.replace(/[^,\d]/g, '').toString(),
+        split   		= number_string.split(','),
+        sisa     		= split[0].length % 3,
+        rupiah     		= split[0].substr(0, sisa),
+        ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
+
+        // tambahkan titik jika yang di input sudah menjadi angka ribuan
+        if(ribuan){
+            separator = sisa ? '.' : '';
+            rupiah += separator + ribuan.join('.');
+        }
+
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+    }
 </script>
 
 @endsection

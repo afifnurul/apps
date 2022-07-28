@@ -20,6 +20,15 @@ class PesanController extends Controller
         return view('user.pesanan', compact('pesanan', 'invoice'));
     }
 
+    public function batal($id)
+    {
+        $pesanan = Pesanan::find($id);
+        $pesanan->status = 'dibatalkan';
+        $pesanan->save();
+
+        return redirect()->route('user.pesanan');
+    }
+
     public static function tglID($tanggal)
     {
         $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];

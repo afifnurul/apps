@@ -98,11 +98,18 @@ class TransaksiController extends Controller
         $transaksi = new Transaksi();
         $transaksi->kd_transaksi = $kd_transaksi;
         $transaksi->id_pesanan = $request->id_pesanan;
-        $transaksi->total = '1000000';
-        $data = self::bankTF($kd_transaksi, $request->metode, $transaksi->total);
+        $transaksi->pembayaran = $request->bayar;
+        if($request->bayar == 'dp'){
+            $transaksi->total = $request->nominal;
+            $data = self::bankTF($kd_transaksi, $request->bank, $request->nominal);
+        } else {
+            $pesanan = Pesanan::find($request->id_pesanan);
+            $transaksi->total = $pesanan->paketnya->harga;
+            $data = self::bankTF($kd_transaksi, $request->bank, $pesanan->paketnya->harga);
+        }
         $transaksi->metode = $data->va_numbers[0]->bank;
         $transaksi->rekening = $data->va_numbers[0]->va_number;
-        $transaksi->expired = Carbon::now()->addHours(4)->format('Y-m-d H:i:s');
+        $transaksi->expired = Carbon::now()->addDay()->format('Y-m-d H:i:s');
         $transaksi->status = $data->transaction_status;
         $transaksi->save();
 
@@ -110,10 +117,20 @@ class TransaksiController extends Controller
         $pesanan->status = 'menunggu DP';
         $pesanan->save();
 
+        $data = encrypt($kd_transaksi);
+        return redirect()->route('user.tagihan.show', ['id' => $data]);
+        // return view('user.tagihan', compact('transaksi'));
+    }
+
+    public function showTagihan($id)
+    {
+        $kode = decrypt($id);
+        $transaksi = Transaksi::find($kode);
+        
         return view('user.tagihan', compact('transaksi'));
     }
 
-    public static function bankTF($kd_transaksi, $bank, $nominal,)
+    public static function bankTF($kd_transaksi, $bank, $nominal)
     {
         $client = new Client();
         $response = $client->post('https://api.sandbox.midtrans.com/v2/charge',
@@ -131,11 +148,6 @@ class TransaksiController extends Controller
                     ], 
                     'bank_transfer' => [
                         'bank' => $bank
-                    ],
-                    'custom_expiry' => [
-                        'order_time' => Carbon::now()->format('Y-m-d H:i:s').' +0700',
-                        'expiry_duration' => 4,
-                        'unit' => 'hour'
                     ]
                 ])
             ]);

@@ -37,27 +37,29 @@
                     <tbody>
                       <tr>
                         <th scope="row">1</th>
-                        <td>nama paket</td>
+                        <td>{{ $transaksi->pesanannya->paketnya->nama }}</td>
                         <td>Bank {{ strtoupper($transaksi->metode) }}</td>
-                        <td>Rp. 14.000.000</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td>Sub Total</td>
-                        <td></td>
+                        <td>Rp. {{ number_format($transaksi->pesanannya->paketnya->harga, 0, '', '.') }}</td>
                       </tr>
                       <tr>
                         <th scope="row"></th>
                         <td></td>
                         <td>DP</td>
-                        <td></td>
+                        <td>
+                          @if ($transaksi->pembayaran == 'dp')
+                              Rp. {{ number_format($transaksi->total, 0, '', '.') }}
+                          @else
+                              Rp. 0
+                          @endif
+                        </td>
                       </tr>
                       <tr>
                         <th scope="row"></th>
                         <td></td>
                         <td>Total</td>
-                        <td></td>
+                        <td>
+                          Rp. {{ number_format($transaksi->total, 0, '', '.') }}
+                        </td>
                       </tr>
                     </tbody>
                   </table>

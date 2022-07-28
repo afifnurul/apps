@@ -6,7 +6,7 @@
 
     @include('navigation.sidebar-user')
 
-    <div id="content" class="p-4 p-md-5">
+    <div id="content" class="p-4">
 
         <div class="mt-1">
             <h3>Pesanan</h3>
@@ -46,9 +46,9 @@
             </thead>
             
             <tbody>
-                <?php
-                    $no = 1;    
-                    ?>
+                @php
+                    $no = 1;
+                @endphp
                     @if (isset($pesanan))
                         @foreach ($pesanan as $data)
                             <tr>
@@ -59,30 +59,23 @@
                                 <td>{{ App\Http\Controllers\User\PesanController::tglID($data->tgl_kembali) }}</td>
                                 <td>{{ $data->catatan }}</td>
                                 <td>{{ $data->status }}</td>
-                                @if ($data->status == 'menunggu')
-                                    <td>
-                                        <a href="" role="button" class="btn btn-danger">Batalkan Pesanan</a>
-                                    </td>
-                                @elseif ($data->status == 'diterima')
-                                    <td>
+                                <td>
+                                    @if ($data->status == 'menunggu')
+                                        <a href="{{ route('batalkan.pesanan', ['id' => $data->id]) }}" role="button" class="btn btn-danger">Batalkan Pesanan</a>
+                                    @endif
+                                    @if ($data->status == 'diterima')
                                         <a href="{{ route('pilih.pembayaran', ['id' => $data->id]) }}" role="button" class="btn btn-primary">Pilih Pembayaran</a>
-                                    </td>
-                                @else
-                                <td></td>
-                                @endif
+                                    @endif
+                                </td>
                             </tr>
-                        <?php $no++; ?>
+                        @php
+                            $no++;
+                        @endphp
                         @endforeach
                     @endif
             </tbody>
           </table>
     </div>
 </div>
-
-<script>
-    $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-    })
-</script>
 
 @endsection

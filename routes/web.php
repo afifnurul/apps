@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth']], function(){
     });
     Route::prefix('pesanan')->group(function(){
         Route::get('/', [PesanController::class, 'index'])->name('user.pesanan');
+        Route::get('/batal/{id}', [PesanController::class, 'batal'])->name('batalkan.pesanan');
     });
     Route::get('/pesan-sekarang/{id}', [TransaksiController::class, 'index'])->name('pesan-sekarang');
     Route::post('/pesan-sekarang', [TransaksiController::class, 'simpanSewa'])->name('user.simpanSewa');
@@ -63,7 +64,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::prefix('tagihan')->group(function(){
         Route::get('/', [TransaksiController::class, 'tagihan'])->name('user.tagihan');
         Route::post('/', [TransaksiController::class, 'bayar'])->name('tagihan');
-
+        Route::get('/{id}', [TransaksiController::class, 'showTagihan'])->name('user.tagihan.show');
     });
 });
 
