@@ -21,7 +21,7 @@
         <div class="d-flex col-11 align-items-center mb-2">
           <span>Filter: </span>
           <select name="tgl" id="tgl" class="form-control col-2 ml-3">
-            <option value="0">-Pilih-</option>
+            <option value="0" selected disabled>-Pilih-</option>
             <option value="tgl_acara">Tanggal Acara</option>
             <option value="tgl_kembali">Tanggal Pengembalian</option>
           </select>
