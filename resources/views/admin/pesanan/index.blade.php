@@ -72,7 +72,7 @@
       </div>
     </div>
   </div>
-
+  {{ $pesanan->links() }}
 </div>
 
 @endsection

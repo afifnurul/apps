@@ -13,7 +13,7 @@ class AdminPesananController extends Controller
     {
         // TransaksiController::statusTransaksi();
         
-        $pesanan = Pesanan::all();
+        $pesanan = Pesanan::latest()->paginate(10);
         
         return view('admin.pesanan.index', compact('pesanan'));
     }
