@@ -98,7 +98,11 @@ class TransaksiController extends Controller
         $transaksi = new Transaksi();
         $transaksi->kd_transaksi = $kd_transaksi;
         $transaksi->id_pesanan = $request->id_pesanan;
-        $transaksi->pembayaran = $request->bayar;
+        if(isset($request->bayar)){
+            $transaksi->pembayaran = $request->bayar;
+        } else {
+            $transaksi->pembayaran = 'lunas';
+        }
         if($request->bayar == 'dp'){
             $transaksi->total = $request->nominal;
             $data = self::bankTF($kd_transaksi, $request->bank, $request->nominal);
