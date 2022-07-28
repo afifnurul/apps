@@ -45,7 +45,7 @@
                 <td>{{ $item->pesanannya->usernya->name }}</td>
                 <td>{{ $item->pesanannya->paketnya->nama }}</td>
                 <td>Rp{{ number_format($item->pesanannya->paketnya->harga, 0, '', '.') }}</td>
-                <td>{{ date("d/m/Y", strtotime($item->pesanannya->tgl_acara)) }}</td>
+                <td>{{ date("d/m/Y", strtotime($item->pesanannya->tgl_kembali)) }}</td>
                 <td>{{ $item->pesanannya->alamat_acara }}</td>
                 <td>{{ ($item->denda != null) ? 'Iya' : 'Tidak' }}</td>
                 <td>

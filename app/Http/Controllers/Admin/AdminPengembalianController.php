@@ -31,7 +31,7 @@ class AdminPengembalianController extends Controller
 
         $pengembalian = new Pengembalian();
         $pengembalian->id_pesanan = $id_pesanan;
-        if($denda != null){
+        if(!empty($denda)){
             $pengembalian->denda = $denda;
         }
         $pengembalian->save();
