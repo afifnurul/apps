@@ -11,7 +11,7 @@
             <span class="ml-2">Cetak Halaman</span>
         </a>
     </div>
-    <div class="card w-50 mx-auto" id="card" style="border-color: #c88a72">
+    <div class="card w-50 mx-auto" id="card">
         
         <div class="card-body">
             <div class="row">
@@ -40,33 +40,42 @@
                     <tbody>
                       <tr>
                         <th scope="row">1</th>
-                        <td>nama paket</td>
-                        <td>Bank </td>
-                        <td>Rp. 14.000.000</td>
+                        <td>Paket B</td>
+                        <td>Bank BNI</td>
+                        <td>Rp. 3.800.000</td>
                       </tr>
                       <tr>
                         <th scope="row"></th>
                         <td></td>
                         <td>Sub Total</td>
-                        <td></td>
+                        <td>Rp. 3.800.000</td>
                       </tr>
                       <tr>
                         <th scope="row"></th>
                         <td></td>
                         <td>DP</td>
-                        <td></td>
+                        <td>0</td>
                       </tr>
                       <tr>
                         <th scope="row"></th>
                         <td></td>
                         <td>Total</td>
-                        <td></td>
+                        <td>Rp. 3.800.000</td>
                       </tr>
                     </tbody>
                   </table>
             </div>
+
+            <div class="w-50 mt-4 ml-auto  mx-auto d-flex justify-content-end p-2">
+              <p>Terima Kasih</p>
+            </div>
+            <div class="w-50 mt-3 ml-auto  mx-auto d-flex justify-content-end p-1">
+              <img src="{{ asset('img/ttd.png') }}" width="50px" height="30px" alt="">
+            </div>
+ 
         </div>
     </div>
+    
     <div class="w-50 mt-2 mx-auto no-print">
         <a href="{{ route('user.pesanan') }}" role="button" class="btn btn-success">Kembali</a>
     </div>

@@ -47,6 +47,8 @@
         <div class="card w-50 mt-4 mx-auto" >
                 <input type="hidden" name="id_pesanan" value="{{ $pesanan->id }}">
                 <div class="card-body">
+                    @if ($pesanan->paketnya->kategorinya->nama != 'Lain-lain')
+                        
                     <div>
                         <div>
                             Pembayaran
@@ -69,6 +71,7 @@
                             <input type="number" name="nominal" value="1000000" min="1000000" max="{{ $pesanan->paketnya->harga }}" step="500000" class="form-control col-4 d-none">
                         </div>
                     </div>
+                    @endif
                     <div class="mt-2">
                         <div class="mr-auto">Metode Pembayaran</div>
                         <div class="mt-2 d-flex">
