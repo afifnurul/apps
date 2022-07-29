@@ -31,7 +31,7 @@ class PesanController extends Controller
 
     public static function tglID($tanggal)
     {
-        $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        $bulan = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
         $date = explode('-', $tanggal);
         $tgl = $date[2];
         $bln = (int) $date[1];

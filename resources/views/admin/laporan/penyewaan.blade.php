@@ -51,7 +51,7 @@
                     $status = App\Http\Controllers\Admin\AdminPengembalianController::cekStatus($item->id)
                   @endphp
                   @if ($status != 'Selesai')
-                  Rp1.000.000
+                  Rp{{ number_format($item->transaksinya->total, 0, '', '.') }}
                   @else
                   Rp{{ number_format($item->paketnya->harga, 0, '', '.') }}
                   @endif
