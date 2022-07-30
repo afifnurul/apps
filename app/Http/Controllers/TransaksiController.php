@@ -111,18 +111,19 @@ class TransaksiController extends Controller
             $transaksi->total = $pesanan->paketnya->harga;
             $data = self::bankTF($kd_transaksi, $request->bank, $pesanan->paketnya->harga);
         }
-        $transaksi->metode = $data->va_numbers[0]->bank;
-        $transaksi->rekening = $data->va_numbers[0]->va_number;
-        $transaksi->expired = Carbon::now()->addDay()->format('Y-m-d H:i:s');
-        $transaksi->status = $data->transaction_status;
-        $transaksi->save();
+        return $data;
+        // $transaksi->metode = $data->va_numbers[0]->bank;
+        // $transaksi->rekening = $data->va_numbers[0]->va_number;
+        // $transaksi->expired = Carbon::now()->addDay()->format('Y-m-d H:i:s');
+        // $transaksi->status = $data->transaction_status;
+        // $transaksi->save();
 
-        $pesanan = Pesanan::find($request->id_pesanan);
-        $pesanan->status = 'menunggu DP';
-        $pesanan->save();
+        // $pesanan = Pesanan::find($request->id_pesanan);
+        // $pesanan->status = 'menunggu DP';
+        // $pesanan->save();
 
-        $data = encrypt($kd_transaksi);
-        return redirect()->route('user.tagihan.show', ['id' => $data]);
+        // $data = encrypt($kd_transaksi);
+        // return redirect()->route('user.tagihan.show', ['id' => $data]);
         // return view('user.tagihan', compact('transaksi'));
     }
 
@@ -137,11 +138,11 @@ class TransaksiController extends Controller
     public static function bankTF($kd_transaksi, $bank, $nominal)
     {
         $client = new Client();
-        $response = $client->post('https://api.sandbox.midtrans.com/v2/charge',
+        $response = $client->post('https://api.midtrans.com/v2/charge',
             [
                 'headers' => [
                     'Accept' => 'application/json',
-                    'Authorization' => 'Basic '.env('MIDTRANS_SERVER_KEY'),
+                    'Authorization' => 'Basic '. base64_encode("Mid-server-iF43JvS-zrgipqizJYnqxF7r"),
                     'Content-Type' => 'application/json'
                 ],
                 'body' => json_encode([

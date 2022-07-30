@@ -19,6 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//get bas64 server key
+Route::get('/key', function(){
+    return base64_encode('Mid-server-iF43JvS-zrgipqizJYnqxF7r');
+});
+
 // menangani update status transaksi ketika midtrans kirim konfirmasi
 
 Route::post('/notification', [MidtransNotificationController::class, 'handler']);
